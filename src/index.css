@@ -191,6 +191,7 @@ p  { color: var(--c-text-2); }
 .form-control-d              { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08); color: var(--c-text-dark); }
 .form-control-d::placeholder { color: rgba(139,148,158,0.7); }
 .form-control-d:focus        { border-color: var(--c-green-2); box-shadow: 0 0 0 3px rgba(106,173,53,0.15); background: rgba(255,255,255,0.07); }
+.form-control-d option       { background: #161b22; color: #e6edf3; }
 .form-error   { color: #e5534b; font-size: 0.77rem; margin-top: 0.3rem; display: flex; align-items: center; gap: 0.25rem; }
 
 /* ── Utility ── */

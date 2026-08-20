@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar        from './components/Navbar';
 import Hero          from './components/Hero';
 import Overview      from './components/Overview';
@@ -9,12 +9,30 @@ import Location      from './components/Location';
 import About         from './components/About';
 import Footer        from './components/Footer';
 import EnquiryModal  from './components/EnquiryModal';
+import PopupModal    from './components/PopupModal';
 import { FileDown, PhoneCall } from 'lucide-react';
 import './App.css';
 
 export default function App() {
   const [modalOpen,  setModalOpen]  = useState(false);
   const [modalTitle, setModalTitle] = useState('Register Your Interest');
+
+  /* ── Premium auto-popup ── */
+  const [popupOpen, setPopupOpen] = useState(false);
+  useEffect(() => {
+    const alreadyShown = sessionStorage.getItem('popupShown');
+    if (alreadyShown) return;
+
+    const isMobile = window.innerWidth <= 768;
+    const delay    = isMobile ? 0 : 3000;          // instant on mobile, 3 s on desktop
+
+    const timer = setTimeout(() => {
+      setPopupOpen(true);
+      sessionStorage.setItem('popupShown', 'true');
+    }, delay);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const openModal  = (title = 'Register Your Interest') => { setModalTitle(title); setModalOpen(true);  };
   const closeModal = () => setModalOpen(false);
@@ -36,6 +54,9 @@ export default function App() {
       <Footer />
 
       <EnquiryModal isOpen={modalOpen} onClose={closeModal} defaultTitle={modalTitle} />
+
+      {/* Premium auto popup */}
+      <PopupModal isOpen={popupOpen} onClose={() => setPopupOpen(false)} />
 
       {/* Floating vertical sidebar CTAs */}
       <div style={{
