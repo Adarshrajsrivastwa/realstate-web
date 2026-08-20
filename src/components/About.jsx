@@ -68,8 +68,8 @@ export default function About() {
             {/* Contact badges */}
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.25rem', marginTop: '0.5rem' }}>
               {[
-                { icon: PhoneCall, label: 'Call an Advisor', value: '+91 9999 555 555' },
-                { icon: Mail,      label: 'Sales Enquiry',   value: 'sales@acegroup.co.in' },
+                { icon: PhoneCall, label: 'Call an Advisor', value: '+91 84489 83343' },
+                { icon: Mail,      label: 'Sales Enquiry',   value: 'blixtechnologies.noida@gmail.com' },
               ].map(({ icon: Icon, label, value }, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', background: '#fff', border: '1px solid var(--c-border)', borderRadius: 14, padding: '0.85rem 1.2rem', boxShadow: 'var(--shadow-sm)' }}>
                   <div style={{ width: 40, height: 40, borderRadius: 10, background: 'var(--c-green-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--c-green)', flexShrink: 0 }}>

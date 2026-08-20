@@ -119,9 +119,9 @@ export default function Navbar({ onOpenModal }) {
             transition={{ type: 'spring', stiffness: 130, damping: 18, delay: 0.4 }}
             style={{ display: 'none', alignItems: 'center', gap: '1rem' }}
           >
-            <a href="tel:+919999555555" style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', textDecoration: 'none', fontWeight: 600, fontSize: '0.85rem', color: scrolled ? 'var(--c-text)' : 'rgba(230,237,243,0.9)', transition: 'color 0.3s' }}>
+            <a href="tel:+918448983343" style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', textDecoration: 'none', fontWeight: 600, fontSize: '0.85rem', color: scrolled ? 'var(--c-text)' : 'rgba(230,237,243,0.9)', transition: 'color 0.3s' }}>
               <Phone size={14} style={{ color: scrolled ? 'var(--c-green)' : '#7cc44a' }} />
-              +91 9999 555 555
+              +91 84489 83343
             </a>
             <motion.button
               onClick={() => onOpenModal('Submit Query')}
@@ -207,10 +207,10 @@ export default function Navbar({ onOpenModal }) {
               </motion.ul>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                <a href="tel:+919999555555"
+                <a href="tel:+918448983343"
                   style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', textDecoration: 'none', color: 'var(--c-text)', fontWeight: 600, padding: '0.75rem', borderRadius: 12, background: 'var(--c-cream)', border: '1px solid var(--c-border)' }}
                 >
-                  <Phone size={14} style={{ color: 'var(--c-green)' }} />+91 9999 555 555
+                  <Phone size={14} style={{ color: 'var(--c-green)' }} />+91 84489 83343
                 </a>
                 <button onClick={() => { setOpen(false); onOpenModal('Submit Query'); }} className="btn btn-primary" style={{ width: '100%' }}>
                   Submit Query
