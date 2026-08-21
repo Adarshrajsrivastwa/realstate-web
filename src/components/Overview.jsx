@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { ShieldCheck } from 'lucide-react';
 
 const IMAGES = [
   { src: '/swimming_pool.jpg',    label: 'Resort Swimming Pool',        rotate: -6, zIndex: 10, offset: { y: -36, x: -22 } },
@@ -46,6 +47,38 @@ export default function Overview() {
                   <div style={{ fontSize: '0.82rem', color: 'var(--c-text-2)', marginTop: '0.25rem', fontWeight: 500 }}>{label}</div>
                 </div>
               ))}
+            </div>
+
+            {/* RERA Certification Box */}
+            <div style={{
+              marginTop: '1.5rem',
+              padding: '1.25rem 1.5rem',
+              background: 'rgba(139,0,0,0.04)',
+              border: '1.5px solid rgba(139,0,0,0.12)',
+              borderRadius: 'var(--r-lg)',
+              display: 'flex',
+              gap: '1rem',
+              alignItems: 'start'
+            }}>
+              <div style={{
+                width: 44, height: 44, borderRadius: 10,
+                background: 'var(--c-crimson)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                color: '#fff', flexShrink: 0, marginTop: '2px'
+              }}>
+                <ShieldCheck size={24} />
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+                <span style={{ fontFamily: 'var(--font-h)', fontWeight: 800, fontSize: '1.1rem', color: 'var(--c-crimson)' }}>
+                  RERA Registered: UPRERAPRJ528653/07/2026
+                </span>
+                <p style={{ fontSize: '0.86rem', color: 'var(--c-text-2)', lineHeight: 1.5, margin: 0 }}>
+                  The RERA number for ACE Arte is <strong>UPRERAPRJ528653/07/2026</strong>. This number is registered with the Uttar Pradesh Real Estate Regulatory Authority (UP RERA) and ensures transparency and buyer protection for the project.
+                </p>
+                <a href="https://up-rera.in/" target="_blank" rel="noopener noreferrer" style={{ alignSelf: 'start', fontSize: '0.8rem', color: 'var(--c-crimson)', fontWeight: 700, textDecoration: 'underline', marginTop: '0.25rem', display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
+                  Verify on UP RERA Website
+                </a>
+              </div>
             </div>
           </motion.div>
 

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { ShieldCheck, Leaf, Landmark, ArrowRight, CircleCheckBig } from 'lucide-react';
 
 const BADGES = [
-  { icon: ShieldCheck, text: 'UP RERA Approved — Reg No: UPRERAPRJ155215',              color: '#ff9999', glow: 'rgba(139,0,0,0.22)'  },
+  { icon: ShieldCheck, text: 'UP RERA Approved — Reg No: UPRERAPRJ528653/07/2026',       color: '#ff9999', glow: 'rgba(139,0,0,0.22)'  },
   { icon: Leaf,        text: 'Surrounded by 80% natural greenery — Sector 150',         color: '#ffb3b3', glow: 'rgba(139,0,0,0.18)' },
   { icon: Landmark,    text: 'Luxury residences starting at 1.45 Cr — Limited units',   color: '#ffd0d0', glow: 'rgba(139,0,0,0.14)'  },
 ];
@@ -192,7 +192,7 @@ export default function Hero({ onOpenModal }) {
 
               <div style={{ marginTop: '1.75rem', paddingTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.06)', textAlign: 'center' }}>
                 <span style={{ fontSize: '0.68rem', color: 'var(--c-text-dark-2)', letterSpacing: '0.04em' }}>
-                  RERA Reg: UPRERAPRJ155215 — rera-up.in
+                  RERA Reg: UPRERAPRJ528653/07/2026 — rera-up.in
                 </span>
               </div>
             </div>

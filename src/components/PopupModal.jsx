@@ -230,7 +230,7 @@ export default function PopupModal({ isOpen, onClose }) {
             {/* ── RERA footer — identical to Hero ── */}
             <div style={{ marginTop: '1.75rem', paddingTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.06)', textAlign: 'center' }}>
               <span style={{ fontSize: '0.68rem', color: 'var(--c-text-dark-2)', letterSpacing: '0.04em' }}>
-                RERA Reg: UPRERAPRJ155215 — rera-up.in
+                RERA Reg: UPRERAPRJ528653/07/2026 — rera-up.in
               </span>
             </div>
           </motion.div>

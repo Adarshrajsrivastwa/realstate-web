@@ -119,7 +119,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div style={{ borderTop: '1px solid var(--c-border-dark)', paddingTop: '1.5rem', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '0.75rem' }}>
           <span style={{ fontSize: '0.78rem', color: 'var(--c-text-dark-2)' }}>
-            © 2026 ACE Group. All Rights Reserved. RERA Reg: UPRERAPRJ155215.
+            © 2026 ACE Group. All Rights Reserved. RERA Reg: UPRERAPRJ528653/07/2026.
           </span>
           <span style={{ fontSize: '0.78rem', color: 'var(--c-text-dark-2)' }}>
             Crafted with precision for excellence.
