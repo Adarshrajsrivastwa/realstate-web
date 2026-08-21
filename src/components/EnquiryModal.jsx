@@ -36,7 +36,7 @@ export default function EnquiryModal({ isOpen, onClose, defaultTitle = 'Register
           {/* Backdrop */}
           <motion.div initial={{ opacity:0 }} animate={{ opacity:1 }} exit={{ opacity:0 }}
             onClick={onClose}
-            style={{ position:'absolute', inset:0, background:'rgba(13,17,23,0.7)', backdropFilter:'blur(10px)', WebkitBackdropFilter:'blur(10px)' }}
+            style={{ position:'absolute', inset:0, background:'rgba(20,0,0,0.75)', backdropFilter:'blur(10px)', WebkitBackdropFilter:'blur(10px)' }}
           />
 
           {/* Panel */}

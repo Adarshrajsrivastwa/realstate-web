@@ -173,7 +173,7 @@ export default function Navbar({ onOpenModal }) {
           <div style={{ position: 'fixed', inset: 0, zIndex: 45 }}>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
               onClick={() => setOpen(false)}
-              style={{ position: 'absolute', inset: 0, background: 'rgba(13,17,23,0.6)', backdropFilter: 'blur(6px)' }}
+              style={{ position: 'absolute', inset: 0, background: 'rgba(20,0,0,0.68)', backdropFilter: 'blur(6px)' }}
             />
             <motion.div
               initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }}

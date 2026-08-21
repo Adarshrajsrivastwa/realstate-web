@@ -3,9 +3,9 @@ import { motion } from 'framer-motion';
 import { ShieldCheck, Leaf, Landmark, ArrowRight, CircleCheckBig } from 'lucide-react';
 
 const BADGES = [
-  { icon: ShieldCheck, text: 'UP RERA Approved — Reg No: UPRERAPRJ528653/07/2026',       color: '#ff9999', glow: 'rgba(139,0,0,0.22)'  },
-  { icon: Leaf,        text: 'Surrounded by 80% natural greenery — Sector 150',         color: '#ffb3b3', glow: 'rgba(139,0,0,0.18)' },
-  { icon: Landmark,    text: 'Luxury residences starting at 1.45 Cr — Limited units',   color: '#ffd0d0', glow: 'rgba(139,0,0,0.14)'  },
+  { icon: ShieldCheck, text: 'UP RERA Approved — Reg No: UPRERAPRJ528653/07/2026',       color: '#ffffff', glow: 'rgba(255,255,255,0.10)'  },
+  { icon: Leaf,        text: 'Surrounded by 80% natural greenery — Sector 150',         color: '#ffffff', glow: 'rgba(255,255,255,0.08)' },
+  { icon: Landmark,    text: 'Luxury residences starting at 1.45 Cr — Limited units',   color: '#ffffff', glow: 'rgba(255,255,255,0.08)'  },
 ];
 
 const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.13, delayChildren: 0.18 } } };
@@ -30,7 +30,7 @@ export default function Hero({ onOpenModal }) {
     <section id="home" style={{
       position: 'relative', minHeight: '100vh', paddingTop: 96,
       display: 'flex', alignItems: 'center',
-      background: `linear-gradient(105deg,rgba(13,17,23,0.93) 38%,rgba(13,17,23,0.68) 68%,rgba(13,17,23,0.38) 100%), url('/hero_bg.jpg') center/cover no-repeat`,
+      background: `linear-gradient(105deg,rgba(15,15,15,0.92) 38%,rgba(20,5,5,0.78) 68%,rgba(25,10,10,0.35) 100%), url('/hero_bg.jpg') center/cover no-repeat`,
       color: '#fff', overflow: 'hidden',
     }}>
       {/* Bottom fade */}
@@ -45,7 +45,7 @@ export default function Hero({ onOpenModal }) {
             style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
 
             <motion.span variants={fadeUp} className="section-label"
-              style={{ color: '#ff9999', background: 'rgba(139,0,0,0.18)', border: '1px solid rgba(139,0,0,0.30)' }}>
+              style={{ color: '#ffffff', background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)' }}>
               Welcome to the Elite
             </motion.span>
 
@@ -54,7 +54,7 @@ export default function Hero({ onOpenModal }) {
               <span className="grad-text">Meets Nature</span>
             </motion.h1>
 
-            <motion.p variants={fadeUp} style={{ fontSize: '1.1rem', color: 'rgba(139,148,158,0.9)', maxWidth: 520, lineHeight: 1.65 }}>
+            <motion.p variants={fadeUp} style={{ fontSize: '1.1rem', color: 'rgba(180,185,195,0.9)', maxWidth: 520, lineHeight: 1.65 }}>
               Immerse yourself in premium residences nestled inside a green paradise. ACE Arte offers ultra-luxury apartments crafted for refined tastes, located in Sector 150, Noida.
             </motion.p>
 
@@ -67,9 +67,9 @@ export default function Hero({ onOpenModal }) {
                   transition={{ type: 'spring', stiffness: 340, damping: 22 }}
                   style={{
                     display: 'flex', alignItems: 'center', gap: '0.9rem',
-                    background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.07)',
+                    background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.09)',
                     borderRadius: 14, padding: '0.75rem 1.1rem', maxWidth: 500,
-                    backdropFilter: 'blur(6px)', cursor: 'default',
+                    backdropFilter: 'blur(8px)', cursor: 'default',
                   }}
                 >
                   {/* Animated icon box */}
@@ -78,8 +78,8 @@ export default function Hero({ onOpenModal }) {
                     transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut', delay: i * 0.6 }}
                     style={{
                       width: 38, height: 38, borderRadius: 10, flexShrink: 0,
-                      background: glow,
-                      border: `1px solid ${color}40`,
+                      background: 'rgba(255,255,255,0.08)',
+                      border: `1px solid rgba(255,255,255,0.15)`,
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                     }}
                   >

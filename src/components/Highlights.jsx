@@ -27,7 +27,7 @@ export default function Highlights() {
               onMouseLeave={e => e.target.style.transform = 'scale(1)'} />
             <div style={{
               position: 'absolute', bottom: '1.25rem', left: '1.25rem',
-              background: 'rgba(13,17,23,0.8)', backdropFilter: 'blur(10px)',
+              background: 'rgba(20,0,0,0.85)', backdropFilter: 'blur(10px)',
               borderRadius: 12, padding: '0.7rem 1.2rem', border: '1px solid rgba(255,255,255,0.08)',
             }}>
               <div style={{ fontSize: '0.66rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--c-text-dark-2)' }}>Project Highlight</div>
