@@ -38,12 +38,7 @@ export default function Footer() {
           {/* Brand */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.4rem' }}>
             <div>
-              <div style={{ fontFamily: 'var(--font-h)', fontSize: '1.55rem', fontWeight: 800, letterSpacing: '0.06em', color: 'var(--c-green-2)', lineHeight: 1.1 }}>
-                ACE ARTE
-              </div>
-              <div style={{ fontSize: '0.65rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--c-text-dark-2)', marginTop: '0.3rem', fontWeight: 600 }}>
-                Sector 150, Noida Expressway
-              </div>
+              <img src="/ace_logo.jpg" alt="ACE Group Logo" style={{ height: 52, width: 'auto', borderRadius: 7, objectFit: 'contain', display: 'block' }} />
             </div>
 
             <p style={{ color: 'var(--c-text-dark-2)', fontSize: '0.88rem', lineHeight: 1.65, maxWidth: 280 }}>
@@ -57,10 +52,10 @@ export default function Footer() {
                 { icon: Mail,   value: 'blixtechnologies.noida@gmail.com', href: 'mailto:blixtechnologies.noida@gmail.com' },
               ].map(({ icon: Icon, value, href }, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.65rem' }}>
-                  <Icon size={14} style={{ color: 'var(--c-green-2)', marginTop: 3, flexShrink: 0 }} />
+                  <Icon size={14} style={{ color: '#ff9999', marginTop: 3, flexShrink: 0 }} />
                   {href
                     ? <a href={href} style={{ color: 'var(--c-text-dark)', textDecoration: 'none', transition: 'color 0.2s' }}
-                        onMouseEnter={e=>e.target.style.color='var(--c-green-2)'}
+                        onMouseEnter={e=>e.target.style.color='#ff9999'}
                         onMouseLeave={e=>e.target.style.color='var(--c-text-dark)'}>{value}</a>
                     : <span style={{ color: 'var(--c-text-dark-2)', lineHeight: 1.4 }}>{value}</span>
                   }
@@ -82,7 +77,7 @@ export default function Footer() {
                     fontSize: '0.875rem', color: 'var(--c-text-dark-2)', textAlign: 'left',
                     transition: 'color 0.2s', display: 'flex', alignItems: 'center', gap: '0.3rem',
                   }}
-                    onMouseEnter={e=>{e.currentTarget.style.color='var(--c-green-2)';}}
+                    onMouseEnter={e=>{e.currentTarget.style.color='#ff9999';}}
                     onMouseLeave={e=>{e.currentTarget.style.color='var(--c-text-dark-2)';}}
                   >
                     {label}
@@ -105,7 +100,7 @@ export default function Footer() {
                     fontSize: '0.875rem', color: 'var(--c-text-dark-2)', textAlign: 'left',
                     transition: 'color 0.2s', display: 'flex', alignItems: 'center', gap: '0.3rem',
                   }}
-                    onMouseEnter={e=>{e.currentTarget.style.color='var(--c-green-2)';}}
+                    onMouseEnter={e=>{e.currentTarget.style.color='#ff9999';}}
                     onMouseLeave={e=>{e.currentTarget.style.color='var(--c-text-dark-2)';}}
                   >
                     {label} <ArrowUpRight size={12} />
@@ -138,13 +133,13 @@ export default function Footer() {
           <motion.button
             initial={{ opacity:0, scale:0.6, y:16 }} animate={{ opacity:1, scale:1, y:0 }} exit={{ opacity:0, scale:0.6, y:16 }}
             onClick={() => window.scrollTo({ top:0, behavior:'smooth' })}
-            whileHover={{ scale:1.1, background:'var(--c-green-2)' }}
+            whileHover={{ scale:1.1, background:'var(--c-crimson-light)' }}
             style={{
               position:'fixed', bottom:'2rem', right:'2rem', zIndex:35,
               width:44, height:44, borderRadius:'50%',
-              background:'var(--c-green)', color:'#fff', border:'none',
+              background:'var(--c-crimson)', color:'#fff', border:'none',
               cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center',
-              boxShadow:'0 6px 20px rgba(0,0,0,0.28)',
+              boxShadow:'0 6px 20px rgba(139,0,0,0.45)',
             }}
           >
             <ChevronUp size={22} />

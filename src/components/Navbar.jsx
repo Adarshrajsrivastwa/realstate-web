@@ -42,11 +42,11 @@ export default function Navbar({ onOpenModal }) {
   const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.065, delayChildren: 0.22 } } };
   const fadeUp  = { hidden: { opacity: 0, y: -10 }, visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 200, damping: 20 } } };
 
-  const bg     = scrolled ? 'rgba(255,255,255,0.96)' : 'rgba(13,17,23,0.52)';
-  const border = scrolled ? 'rgba(0,0,0,0.07)'       : 'rgba(255,255,255,0.08)';
-  const shadow = scrolled ? '0 2px 20px rgba(0,0,0,0.08)' : 'none';
-  const txtCol = scrolled ? 'var(--c-text-2)'        : 'rgba(230,237,243,0.85)';
-  const logoCol= scrolled ? 'var(--c-green)'         : '#7cc44a';
+  const bg     = scrolled ? 'rgba(20,0,0,0.97)'  : 'rgba(10,0,0,0.55)';
+  const border = scrolled ? 'rgba(139,0,0,0.20)'  : 'rgba(139,0,0,0.12)';
+  const shadow = scrolled ? '0 2px 20px rgba(0,0,0,0.40)' : 'none';
+  const txtCol = scrolled ? 'rgba(245,234,234,0.82)' : 'rgba(245,234,234,0.88)';
+  const logoCol= '#8B0000'; // unused now (img logo)
 
   return (
     <>
@@ -69,14 +69,13 @@ export default function Navbar({ onOpenModal }) {
             animate={{ opacity: 1, x: 0 }}
             transition={{ type: 'spring', stiffness: 130, damping: 18 }}
             whileHover={{ scale: 1.03 }}
-            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
           >
-            <span style={{ fontFamily: 'var(--font-h)', fontSize: '1.45rem', fontWeight: 800, letterSpacing: '0.06em', color: logoCol, transition: 'color 0.3s', lineHeight: 1.1 }}>
-              ACE ARTE
-            </span>
-            <span style={{ fontSize: '0.6rem', fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase', color: scrolled ? 'var(--c-text-2)' : 'rgba(139,148,158,0.75)', transition: 'color 0.3s' }}>
-              Premium Residences — Sector 150
-            </span>
+            <img
+              src="/ace_logo.jpg"
+              alt="ACE Group Logo"
+              style={{ height: 48, width: 'auto', display: 'block', borderRadius: 6, objectFit: 'contain' }}
+            />
           </motion.button>
 
           {/* Desktop nav */}
@@ -88,12 +87,12 @@ export default function Navbar({ onOpenModal }) {
                   <motion.li key={item.target} variants={fadeUp}>
                     <motion.button
                       onClick={() => scrollTo(item.target)}
-                      whileHover={{ color: scrolled ? 'var(--c-green)' : '#fff' }}
+                      whileHover={{ color: '#fff' }}
                       style={{
                         background: 'none', border: 'none', cursor: 'pointer',
                         fontFamily: 'var(--font-h)', fontSize: '0.875rem',
                         fontWeight: isActive ? 700 : 500,
-                        color: isActive ? (scrolled ? 'var(--c-green)' : '#7cc44a') : txtCol,
+                        color: isActive ? '#fff' : txtCol,
                         padding: '0.45rem 0.85rem', borderRadius: 8,
                         position: 'relative', transition: 'color 0.25s',
                       }}
@@ -103,7 +102,7 @@ export default function Navbar({ onOpenModal }) {
                         <motion.span layoutId="nav-pill" transition={{ type: 'spring', stiffness: 400, damping: 32 }}
                           style={{
                             position: 'absolute', inset: 0, borderRadius: 8, zIndex: -1,
-                            background: scrolled ? 'rgba(79,138,40,0.08)' : 'rgba(124,196,74,0.14)',
+                            background: 'var(--c-crimson)',
                           }}
                         />
                       )}
@@ -119,8 +118,8 @@ export default function Navbar({ onOpenModal }) {
             transition={{ type: 'spring', stiffness: 130, damping: 18, delay: 0.4 }}
             style={{ display: 'none', alignItems: 'center', gap: '1rem' }}
           >
-            <a href="tel:+918448983343" style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', textDecoration: 'none', fontWeight: 600, fontSize: '0.85rem', color: scrolled ? 'var(--c-text)' : 'rgba(230,237,243,0.9)', transition: 'color 0.3s' }}>
-              <Phone size={14} style={{ color: scrolled ? 'var(--c-green)' : '#7cc44a' }} />
+            <a href="tel:+918448983343" style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', textDecoration: 'none', fontWeight: 600, fontSize: '0.85rem', color: 'rgba(245,234,234,0.9)', transition: 'color 0.3s' }}>
+              <Phone size={14} style={{ color: '#ff6b6b' }} />
               +91 84489 83343
             </a>
             <motion.button
@@ -142,9 +141,9 @@ export default function Navbar({ onOpenModal }) {
             style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               width: 40, height: 40, borderRadius: 10,
-              background: scrolled ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.1)',
-              border: `1px solid ${scrolled ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.15)'}`,
-              color: scrolled ? 'var(--c-text)' : '#e6edf3',
+              background: 'rgba(139,0,0,0.18)',
+              border: '1px solid rgba(139,0,0,0.35)',
+              color: '#ff9999',
               cursor: 'pointer', transition: 'all 0.3s',
             }}
           >
@@ -185,8 +184,8 @@ export default function Navbar({ onOpenModal }) {
                 display: 'flex', flexDirection: 'column', padding: '5rem 1.5rem 2rem',
               }}
             >
-              <div style={{ position: 'absolute', top: '1.4rem', left: '1.5rem' }}>
-                <span style={{ fontFamily: 'var(--font-h)', fontWeight: 800, fontSize: '1.2rem', color: 'var(--c-green)' }}>ACE ARTE</span>
+              <div style={{ position: 'absolute', top: '1rem', left: '1.5rem' }}>
+                <img src="/ace_logo.jpg" alt="ACE Group Logo" style={{ height: 40, width: 'auto', borderRadius: 5, objectFit: 'contain' }} />
               </div>
 
               <motion.ul variants={stagger} initial="hidden" animate="visible"
@@ -196,10 +195,10 @@ export default function Navbar({ onOpenModal }) {
                   <motion.li key={item.target} variants={fadeUp}>
                     <button onClick={() => scrollTo(item.target)}
                       style={{
-                        width: '100%', textAlign: 'left', background: active === item.target ? 'rgba(79,138,40,0.08)' : 'transparent',
+                        width: '100%', textAlign: 'left', background: active === item.target ? 'rgba(139,16,16,0.10)' : 'transparent',
                         border: 'none', borderRadius: 10, padding: '0.75rem 1rem', cursor: 'pointer',
                         fontFamily: 'var(--font-h)', fontSize: '1.05rem', fontWeight: active === item.target ? 700 : 500,
-                        color: active === item.target ? 'var(--c-green)' : 'var(--c-text)',
+                        color: active === item.target ? '#8B1010' : 'var(--c-text)',
                       }}
                     >{item.label}</button>
                   </motion.li>
@@ -208,9 +207,9 @@ export default function Navbar({ onOpenModal }) {
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                 <a href="tel:+918448983343"
-                  style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', textDecoration: 'none', color: 'var(--c-text)', fontWeight: 600, padding: '0.75rem', borderRadius: 12, background: 'var(--c-cream)', border: '1px solid var(--c-border)' }}
+                  style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', textDecoration: 'none', color: '#8B1010', fontWeight: 600, padding: '0.75rem', borderRadius: 12, background: 'rgba(139,16,16,0.07)', border: '1px solid rgba(139,16,16,0.15)' }}
                 >
-                  <Phone size={14} style={{ color: 'var(--c-green)' }} />+91 84489 83343
+                  <Phone size={14} style={{ color: '#8B1010' }} />+91 84489 83343
                 </a>
                 <button onClick={() => { setOpen(false); onOpenModal('Submit Query'); }} className="btn btn-primary" style={{ width: '100%' }}>
                   Submit Query

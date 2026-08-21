@@ -64,8 +64,8 @@ export default function App() {
         zIndex: 40, display: 'flex', flexDirection: 'column', gap: 2,
       }}>
         {[
-          { label: 'Download Brochure', icon: FileDown,   title: 'Download E-Brochure',  bg: 'var(--c-green)',     clr: '#fff' },
-          { label: 'Request Callback',  icon: PhoneCall,  title: 'Request Callback',     bg: 'var(--c-dark)',      clr: 'var(--c-green-2)' },
+          { label: 'Download Brochure', icon: FileDown,   title: 'Download E-Brochure',  bg: 'var(--c-crimson)',      clr: '#fff' },
+          { label: 'Request Callback',  icon: PhoneCall,  title: 'Request Callback',     bg: 'var(--c-crimson-deep)', clr: '#ffcccc' },
         ].map(({ label, icon: Icon, title, bg, clr }) => (
           <button key={label} onClick={() => openModal(title)}
             style={{

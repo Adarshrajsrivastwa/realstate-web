@@ -9,7 +9,7 @@ const PLANS = [
   { type: '4 BHK Ultra-Luxury',  size: '2,650 Sq.Ft.',  rooms: '4 Bed / 5 Bath / Utility', desc: 'Premium penthouse-style 4-bedroom unit with family lounge, 5 balconies, and servants quarters.' },
 ];
 
-const ACCENT_COLORS = ['#4f8a28','#6aad35','#21262d','#0d1117'];
+const ACCENT_COLORS = ['#8B0000','#A31515','#6B0000','#C0392B'];
 
 const BlueprintSVG = ({ color }) => (
   <svg viewBox="0 0 200 152" style={{ width: '100%', height: 148, borderRadius: 12, background: '#f0f4f8', border: '1px dashed #d0d8e4' }}>

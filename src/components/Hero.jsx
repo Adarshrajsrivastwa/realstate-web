@@ -3,9 +3,9 @@ import { motion } from 'framer-motion';
 import { ShieldCheck, Leaf, Landmark, ArrowRight, CircleCheckBig } from 'lucide-react';
 
 const BADGES = [
-  { icon: ShieldCheck, text: 'UP RERA Approved — Reg No: UPRERAPRJ155215',              color: '#5eead4', glow: 'rgba(94,234,212,0.18)'  },
-  { icon: Leaf,        text: 'Surrounded by 80% natural greenery — Sector 150',         color: '#7cc44a', glow: 'rgba(124,196,74,0.18)' },
-  { icon: Landmark,    text: 'Luxury residences starting at 1.45 Cr — Limited units',   color: '#fbbf24', glow: 'rgba(251,191,36,0.18)'  },
+  { icon: ShieldCheck, text: 'UP RERA Approved — Reg No: UPRERAPRJ155215',              color: '#ff9999', glow: 'rgba(139,0,0,0.22)'  },
+  { icon: Leaf,        text: 'Surrounded by 80% natural greenery — Sector 150',         color: '#ffb3b3', glow: 'rgba(139,0,0,0.18)' },
+  { icon: Landmark,    text: 'Luxury residences starting at 1.45 Cr — Limited units',   color: '#ffd0d0', glow: 'rgba(139,0,0,0.14)'  },
 ];
 
 const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.13, delayChildren: 0.18 } } };
@@ -35,7 +35,7 @@ export default function Hero({ onOpenModal }) {
     }}>
       {/* Bottom fade */}
       <div style={{ position: 'absolute', bottom: 0, inset: '0 0 0 0', height: 140,
-        background: 'linear-gradient(to top,#f6f8f3,transparent)', zIndex: 1, pointerEvents: 'none', top: 'auto' }} />
+        background: 'linear-gradient(to top,#fdf8f2,transparent)', zIndex: 1, pointerEvents: 'none', top: 'auto' }} />
 
       <div className="container" style={{ position: 'relative', zIndex: 2, paddingBlock: '3rem' }}>
         <div className="hero-grid" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '3.5rem', alignItems: 'center' }}>
@@ -45,7 +45,7 @@ export default function Hero({ onOpenModal }) {
             style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
 
             <motion.span variants={fadeUp} className="section-label"
-              style={{ color: '#7cc44a', background: 'rgba(124,196,74,0.14)', border: '1px solid rgba(124,196,74,0.25)' }}>
+              style={{ color: '#ff9999', background: 'rgba(139,0,0,0.18)', border: '1px solid rgba(139,0,0,0.30)' }}>
               Welcome to the Elite
             </motion.span>
 
@@ -119,7 +119,7 @@ export default function Hero({ onOpenModal }) {
               {done ? (
                 <motion.div initial={{ scale: 0.85, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
                   style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '2rem 0', textAlign: 'center', gap: '0.75rem' }}>
-                  <CircleCheckBig size={52} style={{ color: '#7cc44a' }} />
+                  <CircleCheckBig size={52} style={{ color: '#ff9999' }} />
                   <p style={{ fontFamily: 'var(--font-h)', fontWeight: 700, fontSize: '1.05rem', color: '#e6edf3' }}>Registered Successfully</p>
                   <p style={{ fontSize: '0.85rem', color: 'var(--c-text-dark-2)' }}>Our specialist will contact you shortly.</p>
                 </motion.div>
@@ -182,7 +182,7 @@ export default function Hero({ onOpenModal }) {
                   </button>
 
                   <div style={{ display: 'flex', gap: '0.5rem', marginTop: '1.1rem', alignItems: 'flex-start' }}>
-                    <input type="checkbox" id="hero-consent" defaultChecked required style={{ marginTop: 3, accentColor: 'var(--c-green-2)', flexShrink: 0 }} />
+                    <input type="checkbox" id="hero-consent" defaultChecked required style={{ marginTop: 3, accentColor: '#8B0000', flexShrink: 0 }} />
                     <label htmlFor="hero-consent" style={{ fontSize: '0.72rem', color: 'var(--c-text-dark-2)', lineHeight: 1.45 }}>
                       I consent to receive project updates from ACE Arte via calls and messages.
                     </label>
