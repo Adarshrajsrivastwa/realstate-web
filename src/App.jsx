@@ -4,6 +4,7 @@ import Hero          from './components/Hero';
 import Overview      from './components/Overview';
 import Highlights    from './components/Highlights';
 import FloorPlans    from './components/FloorPlans';
+import PaymentPlan   from './components/PaymentPlan';
 import Amenities     from './components/Amenities';
 import Location      from './components/Location';
 import About         from './components/About';
@@ -46,6 +47,7 @@ export default function App() {
         <Overview    />
         <Highlights  />
         <FloorPlans  onOpenModal={openModal} />
+        <PaymentPlan />
         <Amenities   />
         <Location    />
         <About       onOpenModal={openModal} />

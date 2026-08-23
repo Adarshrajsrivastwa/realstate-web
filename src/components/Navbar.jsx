@@ -3,13 +3,14 @@ import { Menu, X, Phone } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const NAV_ITEMS = [
-  { label: 'Home',       target: 'home' },
-  { label: 'Overview',   target: 'overview' },
-  { label: 'Highlights', target: 'highlights' },
-  { label: 'Floor Plan', target: 'floor-plan' },
-  { label: 'Amenities',  target: 'amenities' },
-  { label: 'Location',   target: 'location' },
-  { label: 'About Us',   target: 'about' },
+  { label: 'Home',         target: 'home' },
+  { label: 'Overview',     target: 'overview' },
+  { label: 'Highlights',   target: 'highlights' },
+  { label: 'Floor Plan',   target: 'floor-plan' },
+  { label: 'Payment Plan', target: 'payment-plan' },
+  { label: 'Amenities',    target: 'amenities' },
+  { label: 'Location',     target: 'location' },
+  { label: 'About Us',     target: 'about' },
 ];
 
 export default function Navbar({ onOpenModal }) {

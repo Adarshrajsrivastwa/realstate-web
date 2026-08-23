@@ -3,11 +3,11 @@ import { motion } from 'framer-motion';
 import { CircleCheck } from 'lucide-react';
 
 const FEATURES = [
-  { title: 'Iconic Architecture by ACE Group',        desc: 'Delivered by one of NCR\'s most trusted luxury developers with 15+ years of excellence.' },
-  { title: 'Prime Location — Noida Sector 150',       desc: 'Nestled in the greenest, lowest-density planned residential sector in Greater Noida.' },
-  { title: 'Exclusive 11-Acre Gated Township',        desc: 'Expansive low-density community with dedicated security perimeters and smart access.' },
-  { title: 'Spacious 2, 3 and 4 BHK Residences',     desc: 'Thoughtfully planned floor configurations with optimal natural light and cross-ventilation.' },
-  { title: '20,000+ Sq.Ft. World-Class Clubhouse',    desc: 'Loaded with a spa, fitness studio, billiard room, squash court, banquet, and café.' },
+  { title: 'ACE Arte - Best of Noida Township',       desc: 'Premium residential project by ACE Group, established leader in luxury real estate development.' },
+  { title: 'Pre-Launch Pricing from ₹1.21 Cr*',      desc: 'Exclusive pre-launch offers with significant savings and flexible payment plans available.' },
+  { title: 'Choice of 3 & 4 BHK Luxury Residences',  desc: 'Spacious apartments from 1927 to 4370+ Sq.Ft. with premium finishes and modern amenities.' },
+  { title: 'UP RERA Approved - UPRERAPRJ15298644',    desc: 'Fully approved project ensuring transparency, timely delivery, and buyer protection.' },
+  { title: 'Payment Plan 20X5 with Easy EMIs',        desc: 'Flexible construction-linked payment structure designed for investor convenience.' },
 ];
 
 export default function Highlights() {
@@ -42,13 +42,13 @@ export default function Highlights() {
             style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}
           >
             <div>
-              <span className="section-label">ACE Arte Sector 150</span>
-              <h2>Designed for Luxury Residences</h2>
+              <span className="section-label">Launch Special Offer</span>
+              <h2>ACE Arte - Pre-Launch Benefits</h2>
               <div className="section-divider" />
             </div>
 
             <p style={{ fontSize: '1rem', lineHeight: 1.7, color: 'var(--c-text-2)', maxWidth: 520 }}>
-              Every corner of ACE Arte is meticulously planned to support a sophisticated, natural, and premium lifestyle — from intelligent layouts to curated open-air amenities.
+              Secure your luxury residence today and enjoy exclusive pre-launch pricing, flexible payment options, and priority unit selection at ACE Arte.
             </p>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>

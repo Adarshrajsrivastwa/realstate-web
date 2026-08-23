@@ -3,9 +3,9 @@ import { motion } from 'framer-motion';
 import { ShieldCheck, Leaf, Landmark, ArrowRight, CircleCheckBig } from 'lucide-react';
 
 const BADGES = [
-  { icon: ShieldCheck, text: 'UP RERA Approved — Reg No: UPRERAPRJ528653/07/2026',       color: '#ffffff', glow: 'rgba(255,255,255,0.10)'  },
-  { icon: Leaf,        text: 'Surrounded by 80% natural greenery — Sector 150',         color: '#ffffff', glow: 'rgba(255,255,255,0.08)' },
-  { icon: Landmark,    text: 'Luxury residences starting at 1.45 Cr — Limited units',   color: '#ffffff', glow: 'rgba(255,255,255,0.08)'  },
+  { icon: ShieldCheck, text: 'UP RERA Approved — Reg No: UPRERAPRJ15298644',            color: '#ffffff', glow: 'rgba(255,255,255,0.10)'  },
+  { icon: Leaf,        text: 'Best of Noida — Premium residential township',            color: '#ffffff', glow: 'rgba(255,255,255,0.08)' },
+  { icon: Landmark,    text: 'Luxury 3-4 BHK residences starting at ₹1.21 Cr',         color: '#ffffff', glow: 'rgba(255,255,255,0.08)'  },
 ];
 
 const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.13, delayChildren: 0.18 } } };
@@ -50,12 +50,12 @@ export default function Hero({ onOpenModal }) {
             </motion.span>
 
             <motion.h1 variants={fadeUp} style={{ fontFamily: 'var(--font-h)', fontWeight: 800, color: '#fff' }}>
-              Where Luxury<br />
-              <span className="grad-text">Meets Nature</span>
+              ACE Arte<br />
+              <span className="grad-text">Best of Noida</span>
             </motion.h1>
 
             <motion.p variants={fadeUp} style={{ fontSize: '1.1rem', color: 'rgba(180,185,195,0.9)', maxWidth: 520, lineHeight: 1.65 }}>
-              Immerse yourself in premium residences nestled inside a green paradise. ACE Arte offers ultra-luxury apartments crafted for refined tastes, located in Sector 150, Noida.
+              Experience the pinnacle of luxury living at ACE Arte, Noida's most prestigious residential township. Premium 3-4 BHK residences with world-class amenities and unmatched connectivity.
             </motion.p>
 
             {/* USP badges */}
@@ -137,7 +137,7 @@ export default function Hero({ onOpenModal }) {
                       <option value="2BHK">2 BHK</option>
                       <option value="3BHK">3 BHK</option>
                       <option value="4BHK">4 BHK</option>
-                      <option value="Penthouse">Penthouse</option>
+                      <option value="4BHK+S">4 BHK + Servant</option>
                     </select>
                   </div>
 
@@ -148,7 +148,7 @@ export default function Hero({ onOpenModal }) {
                       value={form.budget} onChange={e => setForm({ ...form, budget: e.target.value })}
                       style={{ cursor: 'pointer' }}>
                       <option value="" disabled>Select your budget</option>
-                      <option value="1-1.5Cr">₹1 Cr – ₹1.5 Cr</option>
+                      <option value="1.2-1.5Cr">₹1.21 Cr – ₹1.5 Cr</option>
                       <option value="1.5-2Cr">₹1.5 Cr – ₹2 Cr</option>
                       <option value="2-3Cr">₹2 Cr – ₹3 Cr</option>
                       <option value="3Cr+">₹3 Cr+</option>
@@ -192,7 +192,7 @@ export default function Hero({ onOpenModal }) {
 
               <div style={{ marginTop: '1.75rem', paddingTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.06)', textAlign: 'center' }}>
                 <span style={{ fontSize: '0.68rem', color: 'var(--c-text-dark-2)', letterSpacing: '0.04em' }}>
-                  RERA Reg: UPRERAPRJ528653/07/2026 — rera-up.in
+                  RERA Reg: UPRERAPRJ15298644 — rera-up.in
                 </span>
               </div>
             </div>

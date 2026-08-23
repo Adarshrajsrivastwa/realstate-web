@@ -72,10 +72,10 @@ export default function Overview() {
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
                 <span style={{ fontFamily: 'var(--font-h)', fontWeight: 800, fontSize: '1.05rem', color: 'var(--c-crimson)' }}>
-                  RERA Registered: UPRERAPRJ528653/07/2026
+                  RERA Registered: UPRERAPRJ15298644
                 </span>
                 <p style={{ fontSize: '0.85rem', color: 'var(--c-text-2)', lineHeight: 1.5, margin: 0 }}>
-                  The RERA number for ACE Arte is <strong>UPRERAPRJ528653/07/2026</strong>. This number is registered with the Uttar Pradesh Real Estate Regulatory Authority (UP RERA) and ensures transparency and buyer protection for the project.
+                  The RERA number for ACE Arte is <strong>UPRERAPRJ15298644</strong>. This number is registered with the Uttar Pradesh Real Estate Regulatory Authority (UP RERA) and ensures transparency and buyer protection for the project.
                 </p>
                 <a href="https://up-rera.in/" target="_blank" rel="noopener noreferrer" style={{ alignSelf: 'start', fontSize: '0.78rem', color: 'var(--c-crimson)', fontWeight: 700, textDecoration: 'none', borderBottom: '1.5px solid var(--c-crimson)', marginTop: '0.25rem', display: 'inline-flex', alignItems: 'center', gap: '0.25rem', transition: 'opacity 0.2s' }} onMouseEnter={e => e.target.style.opacity = '0.7'} onMouseLeave={e => e.target.style.opacity = '1'}>
                   Verify on UP RERA Website

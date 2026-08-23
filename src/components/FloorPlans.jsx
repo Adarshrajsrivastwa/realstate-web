@@ -3,10 +3,46 @@ import { motion } from 'framer-motion';
 import { Maximize2, Eye } from 'lucide-react';
 
 const PLANS = [
-  { type: '2 BHK Elite',         size: '1,250 Sq.Ft.',  rooms: '2 Bed / 2 Bath',          desc: 'Spacious 2-bedroom layout with 3 balconies, wide living-dining area, and premium modular kitchen.' },
-  { type: '3 BHK Premium',       size: '1,750 Sq.Ft.',  rooms: '3 Bed / 3 Bath',          desc: 'Grand 3-bedroom unit with 4 balconies, dedicated puja room, and expansive master suite.' },
-  { type: '3 BHK + Servant',     size: '2,050 Sq.Ft.',  rooms: '3 Bed / 4 Bath / Utility', desc: '3 bedrooms with servant quarter, walk-in closet, 4 balconies, and utility/store room.' },
-  { type: '4 BHK Ultra-Luxury',  size: '2,650 Sq.Ft.',  rooms: '4 Bed / 5 Bath / Utility', desc: 'Premium penthouse-style 4-bedroom unit with family lounge, 5 balconies, and servants quarters.' },
+  { 
+    type: '3 BHK (1927 Sq.Ft.)', 
+    size: '1,927 Sq.Ft.', 
+    rooms: '3 Bed / 2 Bath', 
+    desc: 'Spacious 3-bedroom layout with premium finishes, wide living-dining area, and modern kitchen.',
+    price: '₹1.21 Cr*',
+    launch: '₹5,000',
+    prelaunch: '₹16,995',
+    benefit: '₹96,35,000'
+  },
+  { 
+    type: '3 BHK (2614 Sq.Ft.)', 
+    size: '2,614 Sq.Ft.', 
+    rooms: '3 Bed / 3 Bath', 
+    desc: 'Grand 3-bedroom unit with extended living spaces, premium appointments, and luxury finishes.',
+    price: '₹1.21 Cr*',
+    launch: '₹5,000',
+    prelaunch: '₹16,995',
+    benefit: '₹1,30,70,000'
+  },
+  { 
+    type: '4 BHK (4370 Sq.Ft.)', 
+    size: '4,370 Sq.Ft.', 
+    rooms: '4 Bed / 4 Bath', 
+    desc: 'Luxurious 4-bedroom residence with family lounge, servant quarters, and premium amenities.',
+    price: '₹1.21 Cr*',
+    launch: '₹5,000',
+    prelaunch: '₹16,995',
+    benefit: '₹2,18,50,000'
+  },
+  { 
+    type: '4 BHK + Servant', 
+    size: '4,370+ Sq.Ft.', 
+    rooms: '4 Bed / 5 Bath / Utility', 
+    desc: 'Premium penthouse-style 4-bedroom unit with servant quarter, utility room, and luxury fittings.',
+    price: '₹1.21 Cr*',
+    launch: '₹5,000',
+    prelaunch: '₹16,995',
+    benefit: '₹2,18,50,000'
+  },
 ];
 
 const ACCENT_COLORS = ['#8B0000','#A31515','#6B0000','#C0392B'];
@@ -46,7 +82,7 @@ export default function FloorPlans({ onOpenModal }) {
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: '1.75rem' }}>
-          {PLANS.map(({ type, size, rooms, desc }, i) => (
+          {PLANS.map(({ type, size, rooms, desc, price, launch, prelaunch, benefit }, i) => (
             <motion.div key={i}
               initial={{ opacity: 0, scale: 0.96 }} whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }} transition={{ duration: 0.48, delay: i * 0.09, ease: [0.22,1,0.36,1] }}
@@ -68,11 +104,47 @@ export default function FloorPlans({ onOpenModal }) {
 
                 <h3 style={{ fontFamily: 'var(--font-h)', fontWeight: 800, fontSize: '1.35rem', color: 'var(--c-text)' }}>{type}</h3>
                 <p style={{ fontSize: '0.855rem', color: 'var(--c-text-2)', lineHeight: 1.55, minHeight: '3.5rem' }}>{desc}</p>
+                
+                {/* Pricing Details */}
+                <div style={{ 
+                  background: 'linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)', 
+                  borderRadius: '12px', 
+                  padding: '1rem', 
+                  border: '1px solid #dee2e6',
+                  marginTop: '0.5rem'
+                }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
+                    <span style={{ fontWeight: 700, color: 'var(--c-crimson)', fontSize: '1.1rem' }}>Starting at {price}</span>
+                    <span style={{ fontSize: '0.7rem', color: 'var(--c-text-2)', background: '#fff', padding: '0.2rem 0.5rem', borderRadius: '6px' }}>*Base Price</span>
+                  </div>
+                  
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', fontSize: '0.75rem' }}>
+                    <div>
+                      <span style={{ color: 'var(--c-text-2)' }}>Launch Discount:</span>
+                      <div style={{ fontWeight: 600, color: 'var(--c-green)' }}>{launch}</div>
+                    </div>
+                    <div>
+                      <span style={{ color: 'var(--c-text-2)' }}>Pre-Launch:</span>
+                      <div style={{ fontWeight: 600, color: 'var(--c-text)' }}>{prelaunch}</div>
+                    </div>
+                  </div>
+                  
+                  <div style={{ 
+                    marginTop: '0.75rem', 
+                    padding: '0.5rem', 
+                    background: 'rgba(139, 0, 0, 0.05)', 
+                    borderRadius: '8px', 
+                    borderLeft: '3px solid var(--c-crimson)' 
+                  }}>
+                    <span style={{ fontSize: '0.7rem', color: 'var(--c-text-2)' }}>Pre Launch Benefit:</span>
+                    <div style={{ fontWeight: 700, color: 'var(--c-crimson)', fontSize: '0.9rem' }}>₹{benefit}</div>
+                  </div>
+                </div>
               </div>
 
               <div style={{ display: 'flex', gap: '0.65rem' }}>
                 <button onClick={() => onOpenModal(`Request Price — ${type}`)} className="btn btn-primary" style={{ flex: 1, padding: '0.68rem', borderRadius: 12, fontSize: '0.84rem' }}>
-                  Request Price
+                  Get Final Price
                 </button>
                 <button onClick={() => onOpenModal(`View Layout — ${type}`)} className="btn btn-outline" style={{ padding: '0.68rem 0.85rem', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center' }} title="View full layout">
                   <Eye size={16} />
