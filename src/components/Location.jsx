@@ -65,7 +65,7 @@ export default function Location() {
             viewport={{ once: true }} transition={{ duration: 0.62, ease: [0.22,1,0.36,1], delay: 0.15 }}
             style={{ display: 'flex', flexDirection: 'column', gap: '0.9rem' }}
           >
-            <div style={{
+            <div className="loc-map-container" style={{
               position: 'relative', width: '100%', height: 400,
               background: '#e6f0e8', borderRadius: 'var(--r-xl)',
               boxShadow: 'var(--shadow-lg)', border: '1px solid var(--c-border)',
@@ -93,6 +93,7 @@ export default function Location() {
                 <div key={m.id}
                   style={{ position: 'absolute', left: `${(m.x/200)*100}%`, top: `${(m.y/150)*100}%`, transform: 'translate(-50%,-100%)', zIndex: m.type==='primary'?10:5, cursor: 'pointer' }}
                   onMouseEnter={() => setActive(m.id)} onMouseLeave={() => setActive(null)}
+                  onClick={() => setActive(p => p === m.id ? null : m.id)}
                 >
                   <motion.div
                     animate={m.type==='primary' ? { y:[0,-5,0] } : {}}
@@ -133,13 +134,18 @@ export default function Location() {
 
             <p style={{ textAlign: 'center', fontSize: '0.8rem', color: 'var(--c-text-2)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem' }}>
               <Navigation size={13} style={{ color: 'var(--c-green)' }} />
-              Hover on map markers to view estimated drive times to ACE Arte.
+              Tap or hover on map markers to view estimated drive times.
             </p>
           </motion.div>
 
         </div>
       </div>
-      <style>{`@media(min-width:992px){ .loc-grid{ grid-template-columns:0.95fr 1.05fr!important; } }`}</style>
+      <style>{`
+        @media(min-width:992px){ .loc-grid{ grid-template-columns:0.95fr 1.05fr!important; } }
+        @media(max-width:640px){
+          .loc-map-container{ height: 310px !important; }
+        }
+      `}</style>
     </section>
   );
 }

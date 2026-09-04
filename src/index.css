@@ -234,3 +234,110 @@ p  { color: var(--c-text-2); }
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* ── Mobile Sticky Bottom Action Bar & Responsive Overrides ── */
+.mobile-bottom-bar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 64px; /* Space for sticky mobile bar */
+  }
+
+  /* Hide desktop vertical tabs on mobile */
+  .floating-sidebar-ctas {
+    display: none !important;
+  }
+
+  /* Form controls font-size >= 16px prevents iOS zoom-in glitch */
+  .form-control {
+    font-size: 16px !important;
+  }
+
+  /* Sticky Mobile Action Bar */
+  .mobile-bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: rgba(18, 2, 2, 0.96);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    z-index: 99;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.2fr;
+    padding: 6px 10px calc(6px + env(safe-area-inset-bottom, 0px));
+    gap: 8px;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  .mob-action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: var(--font-h);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.15s, opacity 0.15s;
+  }
+
+  .mob-action-btn:active {
+    transform: scale(0.96);
+  }
+
+  .mob-call {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: #ffcccc;
+  }
+
+  .mob-brochure {
+    background: rgba(139, 0, 0, 0.35);
+    border: 1px solid rgba(139, 0, 0, 0.5);
+    color: #ffffff;
+  }
+
+  .mob-enquire {
+    background: var(--c-crimson);
+    color: #ffffff;
+    font-weight: 700;
+    box-shadow: 0 2px 10px rgba(139, 0, 0, 0.45);
+  }
+
+  /* Reposition scroll-to-top button above the mobile bar */
+  .scroll-to-top-btn {
+    bottom: 4.8rem !important;
+    right: 1.2rem !important;
+    width: 38px !important;
+    height: 38px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 2.1rem !important; }
+  h2 { font-size: 1.7rem !important; }
+  .btn { padding: 0.65rem 1.2rem; font-size: 0.84rem; }
+}
+
+@media (max-width: 360px) {
+  .container { padding: 0 0.85rem !important; }
+  .mob-action-btn { font-size: 0.72rem !important; gap: 4px; }
+}
+

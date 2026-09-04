@@ -8,6 +8,7 @@ import PaymentPlan   from './components/PaymentPlan';
 import Amenities     from './components/Amenities';
 import Location      from './components/Location';
 import About         from './components/About';
+import FAQ           from './components/FAQ';
 import Footer        from './components/Footer';
 import EnquiryModal  from './components/EnquiryModal';
 import PopupModal    from './components/PopupModal';
@@ -51,6 +52,7 @@ export default function App() {
         <Amenities   />
         <Location    />
         <About       onOpenModal={openModal} />
+        <FAQ         onOpenModal={openModal} />
       </main>
 
       <Footer />
@@ -60,8 +62,8 @@ export default function App() {
       {/* Premium auto popup */}
       <PopupModal isOpen={popupOpen} onClose={() => setPopupOpen(false)} />
 
-      {/* Floating vertical sidebar CTAs */}
-      <div style={{
+      {/* Floating vertical sidebar CTAs — Desktop only */}
+      <aside aria-label="Quick Actions" className="floating-sidebar-ctas" style={{
         position: 'fixed', right: 0, top: '42%', transform: 'translateY(-50%)',
         zIndex: 40, display: 'flex', flexDirection: 'column', gap: 2,
       }}>
@@ -87,7 +89,22 @@ export default function App() {
             {label}
           </button>
         ))}
-      </div>
+      </aside>
+
+      {/* Sticky Mobile Bottom Action Bar */}
+      <nav aria-label="Mobile Quick Actions" className="mobile-bottom-bar">
+        <a href="tel:+918448983343" className="mob-action-btn mob-call">
+          <PhoneCall size={17} />
+          <span>Call Now</span>
+        </a>
+        <button onClick={() => openModal('Download E-Brochure')} className="mob-action-btn mob-brochure">
+          <FileDown size={17} />
+          <span>Brochure</span>
+        </button>
+        <button onClick={() => openModal('Book Site Visit')} className="mob-action-btn mob-enquire">
+          <span>Enquire</span>
+        </button>
+      </nav>
     </div>
   );
 }

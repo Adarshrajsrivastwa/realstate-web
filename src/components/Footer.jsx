@@ -10,6 +10,7 @@ const NAV_LINKS = [
   { label: 'Amenities',     target: 'amenities'   },
   { label: 'Location',      target: 'location'    },
   { label: 'About ACE Group', target: 'about'     },
+  { label: 'FAQs',          target: 'faq'         },
 ];
 
 const LEGAL_LINKS = ['Privacy Policy', 'Terms and Conditions', 'Official Disclaimer'];
@@ -38,7 +39,7 @@ export default function Footer() {
           {/* Brand */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.4rem' }}>
             <div>
-              <img src="/ace_logo.jpg" alt="ACE Group Logo" style={{ height: 52, width: 'auto', borderRadius: 7, objectFit: 'contain', display: 'block' }} />
+              <img src="/ace_logo_cropped.png" alt="ACE Group Logo" style={{ height: 46, width: 'auto', borderRadius: 7, objectFit: 'contain', display: 'block' }} />
             </div>
 
             <p style={{ color: 'var(--c-text-dark-2)', fontSize: '0.88rem', lineHeight: 1.65, maxWidth: 280 }}>
@@ -127,25 +128,27 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Scroll to top */}
-      <AnimatePresence>
-        {showTop && (
-          <motion.button
-            initial={{ opacity:0, scale:0.6, y:16 }} animate={{ opacity:1, scale:1, y:0 }} exit={{ opacity:0, scale:0.6, y:16 }}
-            onClick={() => window.scrollTo({ top:0, behavior:'smooth' })}
-            whileHover={{ scale:1.1, background:'var(--c-crimson-light)' }}
-            style={{
-              position:'fixed', bottom:'2rem', right:'2rem', zIndex:35,
-              width:44, height:44, borderRadius:'50%',
-              background:'var(--c-crimson)', color:'#fff', border:'none',
-              cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center',
-              boxShadow:'0 6px 20px rgba(139,0,0,0.45)',
-            }}
-          >
-            <ChevronUp size={22} />
-          </motion.button>
-        )}
-      </AnimatePresence>
-    </footer>
-  );
-}
+        {/* Scroll to top */}
+        <AnimatePresence>
+          {showTop && (
+            <motion.button
+              initial={{ opacity:0, scale:0.6, y:16 }} animate={{ opacity:1, scale:1, y:0 }} exit={{ opacity:0, scale:0.6, y:16 }}
+              onClick={() => window.scrollTo({ top:0, behavior:'smooth' })}
+              whileHover={{ scale:1.1, background:'var(--c-crimson-light)' }}
+              className="scroll-to-top-btn"
+              aria-label="Scroll to top"
+              style={{
+                position:'fixed', bottom:'2rem', right:'2rem', zIndex:35,
+                width:44, height:44, borderRadius:'50%',
+                background:'var(--c-crimson)', color:'#fff', border:'none',
+                cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center',
+                boxShadow:'0 6px 20px rgba(139,0,0,0.45)',
+              }}
+            >
+              <ChevronUp size={22} />
+            </motion.button>
+          )}
+        </AnimatePresence>
+      </footer>
+    );
+  }

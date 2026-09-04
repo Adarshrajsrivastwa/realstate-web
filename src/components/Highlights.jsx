@@ -22,9 +22,17 @@ export default function Highlights() {
             viewport={{ once: true }} transition={{ duration: 0.65, ease: [0.22,1,0.36,1] }}
             style={{ position: 'relative', borderRadius: 'var(--r-xl)', overflow: 'hidden', boxShadow: 'var(--shadow-xl)' }}
           >
-            <img src="/living_room.jpg" alt="Luxury penthouse living room" style={{ width: '100%', display: 'block', transition: 'transform 0.5s ease' }}
+            <img
+              src="/living_room.jpg"
+              alt="ACE Arte Luxury Penthouse Living Room Interior Show Flat Noida"
+              loading="lazy"
+              decoding="async"
+              width="600"
+              height="400"
+              style={{ width: '100%', height: 'auto', display: 'block', transition: 'transform 0.5s ease' }}
               onMouseEnter={e => e.target.style.transform = 'scale(1.03)'}
-              onMouseLeave={e => e.target.style.transform = 'scale(1)'} />
+              onMouseLeave={e => e.target.style.transform = 'scale(1)'}
+            />
             <div style={{
               position: 'absolute', bottom: '1.25rem', left: '1.25rem',
               background: 'rgba(20,0,0,0.85)', backdropFilter: 'blur(10px)',

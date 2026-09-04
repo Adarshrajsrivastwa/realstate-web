@@ -62,11 +62,12 @@ export default function PaymentPlan() {
                 <motion.div key={i}
                   initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.1 }}
+                  className="payment-milestone-item"
                   style={{
                     background: 'linear-gradient(135deg, #f8f9fa 0%, #fff 100%)',
                     border: '1px solid var(--c-border)',
                     borderRadius: '16px',
-                    padding: '1.5rem',
+                    padding: '1.25rem',
                     display: 'flex',
                     gap: '1rem',
                     alignItems: 'center',
@@ -75,9 +76,9 @@ export default function PaymentPlan() {
                   }}
                   whileHover={{ transform: 'translateY(-2px)', boxShadow: 'var(--shadow-md)' }}
                 >
-                  <div style={{
-                    width: '50px',
-                    height: '50px',
+                  <div className="payment-milestone-badge" style={{
+                    width: '48px',
+                    height: '48px',
                     borderRadius: '12px',
                     background: 'var(--c-crimson)',
                     color: '#fff',
@@ -85,7 +86,7 @@ export default function PaymentPlan() {
                     alignItems: 'center',
                     justifyContent: 'center',
                     fontWeight: 800,
-                    fontSize: '1.1rem',
+                    fontSize: '1rem',
                     flexShrink: 0
                   }}>
                     {percentage}
@@ -141,7 +142,7 @@ export default function PaymentPlan() {
               </p>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.25rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: '1.25rem' }}>
               {EOI_AMOUNTS.map(({ size, amount, type }, i) => (
                 <motion.div key={i}
                   initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }}
@@ -241,6 +242,18 @@ export default function PaymentPlan() {
             grid-template-columns:1.2fr 0.8fr!important; 
             gap: 4rem!important;
           } 
+        }
+        @media(max-width:640px){
+          .payment-milestone-item{
+            padding: 1rem 0.85rem !important;
+            gap: 0.75rem !important;
+          }
+          .payment-milestone-badge{
+            width: 40px !important;
+            height: 40px !important;
+            font-size: 0.85rem !important;
+            border-radius: 10px !important;
+          }
         }
       `}</style>
     </section>

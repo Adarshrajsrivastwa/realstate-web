@@ -1,0 +1,9 @@
+# robots.txt for ACE Arte Noida Landing Page
+User-agent: *
+Allow: /
+
+# Disallow sensitive asset paths if any
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://aceartenoida.com/sitemap.xml

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { ShieldCheck, Leaf, Landmark, ArrowRight, CircleCheckBig } from 'lucide-react';
+import { ShieldCheck, Leaf, Landmark, ArrowRight } from 'lucide-react';
+import LeadForm from './LeadForm';
 
 const BADGES = [
   { icon: ShieldCheck, text: 'UP RERA Approved — Reg No: UPRERAPRJ15298644',            color: '#ffffff', glow: 'rgba(255,255,255,0.10)'  },
@@ -12,20 +13,6 @@ const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.13, de
 const fadeUp  = { hidden: { y: 28, opacity: 0 }, visible: { y: 0, opacity: 1, transition: { duration: 0.58, ease: [0.22,1,0.36,1] } } };
 
 export default function Hero({ onOpenModal }) {
-  const [form, setForm]       = useState({ propertyType: '', budget: '', phone: '', email: '', message: '' });
-  const [err, setErr]         = useState('');
-  const [sending, setSending] = useState(false);
-  const [done, setDone]       = useState(false);
-
-  const submit = (e) => {
-    e.preventDefault();
-    if (!form.propertyType || !form.phone.trim()) { setErr('Please select Property Type and enter Mobile Number.'); return; }
-    if (!/^\d{10}$/.test(form.phone.replace(/[\s-]/g, ''))) { setErr('Enter a valid 10-digit number.'); return; }
-    if (form.email.trim() && !/\S+@\S+\.\S+/.test(form.email)) { setErr('Enter a valid email address.'); return; }
-    setErr(''); setSending(true);
-    setTimeout(() => { setSending(false); setDone(true); setForm({ propertyType: '', budget: '', phone: '', email: '', message: '' }); setTimeout(() => setDone(false), 3200); }, 1400);
-  };
-
   return (
     <section id="home" style={{
       position: 'relative', minHeight: '100vh', paddingTop: 96,
@@ -42,14 +29,20 @@ export default function Hero({ onOpenModal }) {
 
           {/* LEFT — copy */}
           <motion.div variants={stagger} initial="hidden" animate="visible"
-            style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            style={{ display: 'flex', flexDirection: 'column', gap: '1.35rem' }} className="hero-copy-col">
+
+            {/* Developer Brand Badge */}
+            <motion.div variants={fadeUp} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem', width: 'fit-content', background: 'rgba(20,0,0,0.45)', padding: '0.35rem 0.85rem 0.35rem 0.45rem', borderRadius: 10, border: '1px solid rgba(255,255,255,0.12)', backdropFilter: 'blur(10px)' }}>
+              <img src="/ace_logo_cropped.png" alt="ACE Group" style={{ height: 26, width: 'auto', borderRadius: 4, objectFit: 'contain' }} />
+              <span style={{ fontSize: '0.72rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.85)', fontWeight: 600 }}>Presents</span>
+            </motion.div>
 
             <motion.span variants={fadeUp} className="section-label"
-              style={{ color: '#ffffff', background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)' }}>
+              style={{ color: '#ffffff', background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)', width: 'fit-content' }}>
               Welcome to the Elite
             </motion.span>
 
-            <motion.h1 variants={fadeUp} style={{ fontFamily: 'var(--font-h)', fontWeight: 800, color: '#fff' }}>
+            <motion.h1 variants={fadeUp} style={{ fontFamily: 'var(--font-h)', fontWeight: 800, color: '#fff', lineHeight: 1.15 }}>
               ACE Arte<br />
               <span className="grad-text">Best of Noida</span>
             </motion.h1>
@@ -106,9 +99,9 @@ export default function Hero({ onOpenModal }) {
           {/* RIGHT — interest form */}
           <motion.div initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.75, delay: 0.35, type: 'spring' }}
-            style={{ display: 'flex', justifyContent: 'center' }}
+            style={{ display: 'flex', justifyContent: 'center', width: '100%' }}
           >
-            <div className="card-dark" style={{ width: '100%', maxWidth: 400, padding: '2.25rem' }}>
+            <div className="card-dark hero-form-card" style={{ width: '100%', maxWidth: 440, padding: 'clamp(1.25rem, 4vw, 2.25rem)' }}>
               <p style={{ fontFamily: 'var(--font-h)', fontSize: '1.3rem', fontWeight: 700, color: '#e6edf3', textAlign: 'center', marginBottom: '0.4rem' }}>
                 Express Your Interest
               </p>
@@ -116,79 +109,7 @@ export default function Hero({ onOpenModal }) {
                 Register today for early-bird pricing and layout selection.
               </p>
 
-              {done ? (
-                <motion.div initial={{ scale: 0.85, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
-                  style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '2rem 0', textAlign: 'center', gap: '0.75rem' }}>
-                  <CircleCheckBig size={52} style={{ color: '#ff9999' }} />
-                  <p style={{ fontFamily: 'var(--font-h)', fontWeight: 700, fontSize: '1.05rem', color: '#e6edf3' }}>Registered Successfully</p>
-                  <p style={{ fontSize: '0.85rem', color: 'var(--c-text-dark-2)' }}>Our specialist will contact you shortly.</p>
-                </motion.div>
-              ) : (
-                <form onSubmit={submit}>
-                  {err && <div style={{ background: 'rgba(229,83,75,0.12)', color: '#e5534b', border: '1px solid rgba(229,83,75,0.25)', borderRadius: 10, padding: '0.65rem 0.9rem', fontSize: '0.82rem', marginBottom: '1rem' }}>{err}</div>}
-
-                  {/* Property Type */}
-                  <div className="form-group">
-                    <label className="form-label form-label-d">Property Type</label>
-                    <select className="form-control form-control-d"
-                      value={form.propertyType} onChange={e => setForm({ ...form, propertyType: e.target.value })}
-                      style={{ cursor: 'pointer' }}>
-                      <option value="" disabled>Select property type</option>
-                      <option value="2BHK">2 BHK</option>
-                      <option value="3BHK">3 BHK</option>
-                      <option value="4BHK">4 BHK</option>
-                      <option value="4BHK+S">4 BHK + Servant</option>
-                    </select>
-                  </div>
-
-                  {/* Budget Range */}
-                  <div className="form-group">
-                    <label className="form-label form-label-d">Budget Range</label>
-                    <select className="form-control form-control-d"
-                      value={form.budget} onChange={e => setForm({ ...form, budget: e.target.value })}
-                      style={{ cursor: 'pointer' }}>
-                      <option value="" disabled>Select your budget</option>
-                      <option value="1.2-1.5Cr">₹1.21 Cr – ₹1.5 Cr</option>
-                      <option value="1.5-2Cr">₹1.5 Cr – ₹2 Cr</option>
-                      <option value="2-3Cr">₹2 Cr – ₹3 Cr</option>
-                      <option value="3Cr+">₹3 Cr+</option>
-                    </select>
-                  </div>
-
-                  {/* Mobile */}
-                  <div className="form-group">
-                    <label className="form-label form-label-d">Mobile Number</label>
-                    <input type="tel" className="form-control form-control-d" placeholder="10-digit mobile number"
-                      value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })} />
-                  </div>
-
-                  {/* Email */}
-                  <div className="form-group">
-                    <label className="form-label form-label-d">Email Address</label>
-                    <input type="email" className="form-control form-control-d" placeholder="Your email address"
-                      value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} />
-                  </div>
-
-                  {/* Message */}
-                  <div className="form-group" style={{ marginBottom: '1.4rem' }}>
-                    <label className="form-label form-label-d">Message</label>
-                    <textarea rows={3} className="form-control form-control-d" placeholder="How can we assist you? e.g. Schedule a site visit this weekend"
-                      style={{ resize: 'none' }}
-                      value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} />
-                  </div>
-
-                  <button type="submit" disabled={sending} className="btn btn-primary" style={{ width: '100%', padding: '0.85rem', fontSize: '0.9rem' }}>
-                    {sending ? 'Submitting...' : 'Submit'}
-                  </button>
-
-                  <div style={{ display: 'flex', gap: '0.5rem', marginTop: '1.1rem', alignItems: 'flex-start' }}>
-                    <input type="checkbox" id="hero-consent" defaultChecked required style={{ marginTop: 3, accentColor: '#8B0000', flexShrink: 0 }} />
-                    <label htmlFor="hero-consent" style={{ fontSize: '0.72rem', color: 'var(--c-text-dark-2)', lineHeight: 1.45 }}>
-                      I consent to receive project updates from ACE Arte via calls and messages.
-                    </label>
-                  </div>
-                </form>
-              )}
+              <LeadForm theme="dark" source="Hero Section Form" buttonText="Submit Interest" />
 
               <div style={{ marginTop: '1.75rem', paddingTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.06)', textAlign: 'center' }}>
                 <span style={{ fontSize: '0.68rem', color: 'var(--c-text-dark-2)', letterSpacing: '0.04em' }}>
@@ -201,7 +122,17 @@ export default function Hero({ onOpenModal }) {
         </div>
       </div>
 
-      <style>{`@media(min-width:992px){ .hero-grid{ grid-template-columns:1.15fr 0.85fr!important; } }`}</style>
+      <style>{`
+        @media(min-width:992px){
+          .hero-grid{ grid-template-columns:1.15fr 0.85fr!important; }
+        }
+        @media(max-width:640px){
+          .hero-grid{ gap: 2.5rem !important; }
+          .hero-copy-col h1{ font-size: 2.1rem !important; }
+          .hero-copy-col p{ font-size: 0.95rem !important; }
+        }
+      `}</style>
     </section>
   );
 }
+

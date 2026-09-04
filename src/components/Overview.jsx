@@ -85,7 +85,7 @@ export default function Overview() {
           </motion.div>
 
           {/* Right — stacked image fan */}
-          <div style={{ position: 'relative', height: 440, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div className="ov-image-fan" style={{ position: 'relative', height: 440, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             {IMAGES.map(({ src, label, rotate, zIndex, offset }, i) => (
               <motion.div key={i}
                 initial={{ opacity: 0, scale: 0.82, rotate: 0, y: 50 }}
@@ -93,6 +93,7 @@ export default function Overview() {
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ type: 'spring', damping: 14, stiffness: 70, delay: i * 0.14 }}
                 whileHover={{ scale: 1.06, rotate: 0, zIndex: 50, transition: { duration: 0.28 } }}
+                className="ov-card-item"
                 style={{
                   position: 'absolute', width: 300, zIndex, cursor: 'pointer',
                   background: '#fff', borderRadius: 'var(--r-lg)',
@@ -101,7 +102,15 @@ export default function Overview() {
                   border: '1px solid rgba(0,0,0,0.05)',
                 }}
               >
-                <img src={src} alt={label} style={{ width: '100%', height: 190, objectFit: 'cover', borderRadius: 12, display: 'block' }} />
+                <img
+                  src={src}
+                  alt={`ACE Arte Noida - ${label}`}
+                  loading="lazy"
+                  decoding="async"
+                  width="300"
+                  height="190"
+                  style={{ width: '100%', height: 190, objectFit: 'cover', borderRadius: 12, display: 'block' }}
+                />
                 <div style={{ textAlign: 'center', marginTop: '0.65rem', fontFamily: 'var(--font-h)', fontWeight: 600, fontSize: '0.85rem', color: 'var(--c-text)' }}>
                   {label}
                 </div>
@@ -113,7 +122,15 @@ export default function Overview() {
       </div>
       <style>{`
         @media(min-width:992px){ .ov-grid{ grid-template-columns:0.95fr 1.05fr!important; } }
-        @media(max-width:480px){ .ov-grid>div:last-child{ height:320px!important; } .ov-grid>div:last-child>div{ width:230px!important; } }
+        @media(max-width:768px){
+          .ov-image-fan{ height:360px!important; }
+          .ov-card-item{ width:250px!important; }
+        }
+        @media(max-width:480px){
+          .ov-image-fan{ height:290px!important; }
+          .ov-card-item{ width:210px!important; }
+          .ov-card-item img{ height:140px!important; }
+        }
       `}</style>
     </section>
   );

@@ -3,14 +3,10 @@ import { Menu, X, Phone } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const NAV_ITEMS = [
-  { label: 'Home',         target: 'home' },
-  { label: 'Overview',     target: 'overview' },
-  { label: 'Highlights',   target: 'highlights' },
-  { label: 'Floor Plan',   target: 'floor-plan' },
-  { label: 'Payment Plan', target: 'payment-plan' },
-  { label: 'Amenities',    target: 'amenities' },
-  { label: 'Location',     target: 'location' },
-  { label: 'About Us',     target: 'about' },
+  { label: 'Home',        target: 'home' },
+  { label: 'Floor Plans', target: 'floor-plan' },
+  { label: 'Price Plan',  target: 'payment-plan' },
+  { label: 'Amenities',   target: 'amenities' },
 ];
 
 export default function Navbar({ onOpenModal }) {
@@ -21,11 +17,19 @@ export default function Navbar({ onOpenModal }) {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 60);
+      if (window.scrollY < 380) {
+        setActive('home');
+        return;
+      }
       for (const item of NAV_ITEMS) {
+        if (item.target === 'home') continue;
         const el = document.getElementById(item.target);
         if (el) {
           const r = el.getBoundingClientRect();
-          if (r.top <= 110 && r.bottom >= 110) { setActive(item.target); break; }
+          if (r.top <= 140 && r.bottom >= 140) {
+            setActive(item.target);
+            break;
+          }
         }
       }
     };
@@ -35,8 +39,15 @@ export default function Navbar({ onOpenModal }) {
 
   const scrollTo = (target) => {
     setOpen(false);
+    if (target === 'home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setActive('home');
+      return;
+    }
     const el = document.getElementById(target);
-    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 78, behavior: 'smooth' });
+    if (el) {
+      window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 78, behavior: 'smooth' });
+    }
   };
 
   /* ── Animation variants ── */
@@ -47,7 +58,6 @@ export default function Navbar({ onOpenModal }) {
   const border = scrolled ? 'rgba(139,0,0,0.20)'  : 'rgba(139,0,0,0.12)';
   const shadow = scrolled ? '0 2px 20px rgba(0,0,0,0.40)' : 'none';
   const txtCol = scrolled ? 'rgba(245,234,234,0.82)' : 'rgba(245,234,234,0.88)';
-  const logoCol= '#8B0000'; // unused now (img logo)
 
   return (
     <>
@@ -71,17 +81,19 @@ export default function Navbar({ onOpenModal }) {
             transition={{ type: 'spring', stiffness: 130, damping: 18 }}
             whileHover={{ scale: 1.03 }}
             style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+            aria-label="ACE Arte Home"
           >
             <img
-              src="/ace_logo.jpg"
+              src="/ace_logo_cropped.png"
               alt="ACE Group Logo"
-              style={{ height: 48, width: 'auto', display: 'block', borderRadius: 6, objectFit: 'contain' }}
+              style={{ height: 42, width: 'auto', display: 'block', borderRadius: 6, objectFit: 'contain' }}
+              className="navbar-logo-img"
             />
           </motion.button>
 
           {/* Desktop nav */}
           <motion.nav className="nav-desktop" variants={stagger} initial="hidden" animate="visible" style={{ display: 'none' }}>
-            <ul style={{ listStyle: 'none', display: 'flex', gap: '0.2rem' }}>
+            <ul style={{ listStyle: 'none', display: 'flex', gap: '0.5rem' }}>
               {NAV_ITEMS.map(item => {
                 const isActive = active === item.target;
                 return (
@@ -91,11 +103,12 @@ export default function Navbar({ onOpenModal }) {
                       whileHover={{ color: '#fff' }}
                       style={{
                         background: 'none', border: 'none', cursor: 'pointer',
-                        fontFamily: 'var(--font-h)', fontSize: '0.875rem',
+                        fontFamily: 'var(--font-h)', fontSize: '0.92rem',
                         fontWeight: isActive ? 700 : 500,
                         color: isActive ? '#fff' : txtCol,
-                        padding: '0.45rem 0.85rem', borderRadius: 8,
+                        padding: '0.5rem 1rem', borderRadius: 8,
                         position: 'relative', transition: 'color 0.25s',
+                        letterSpacing: '0.01em',
                       }}
                     >
                       {item.label}
@@ -161,6 +174,17 @@ export default function Navbar({ onOpenModal }) {
       </motion.header>
 
       <style>{`
+        .navbar-logo-img { height: 42px; }
+        @media(max-width: 640px) {
+          .navbar-logo-img { height: 34px; }
+        }
+        @media(min-width: 992px) and (max-width: 1200px) {
+          .nav-desktop ul { gap: 0.3rem !important; }
+          .nav-desktop button { padding: 0.45rem 0.75rem !important; font-size: 0.88rem !important; }
+          .nav-cta { gap: 0.8rem !important; }
+          .nav-cta a { font-size: 0.82rem !important; }
+          .nav-cta button { padding: 0.55rem 1.1rem !important; font-size: 0.82rem !important; }
+        }
         @media(min-width:992px){
           .nav-desktop{ display:block!important; }
           .nav-cta    { display:flex!important;  }
@@ -171,22 +195,36 @@ export default function Navbar({ onOpenModal }) {
       {/* Mobile drawer */}
       <AnimatePresence>
         {open && (
-          <div style={{ position: 'fixed', inset: 0, zIndex: 45 }}>
+          <div style={{ position: 'fixed', inset: 0, zIndex: 90 }}>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
               onClick={() => setOpen(false)}
-              style={{ position: 'absolute', inset: 0, background: 'rgba(20,0,0,0.68)', backdropFilter: 'blur(6px)' }}
+              style={{ position: 'absolute', inset: 0, background: 'rgba(20,0,0,0.72)', backdropFilter: 'blur(6px)' }}
             />
             <motion.div
               initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 28, stiffness: 220 }}
               style={{
-                position: 'absolute', top: 0, right: 0, bottom: 0, width: 280,
-                background: '#fff', boxShadow: '-12px 0 40px rgba(0,0,0,0.14)',
-                display: 'flex', flexDirection: 'column', padding: '5rem 1.5rem 2rem',
+                position: 'absolute', top: 0, right: 0, bottom: 0, width: 'min(300px, 86vw)',
+                background: '#fff', boxShadow: '-12px 0 40px rgba(0,0,0,0.25)',
+                display: 'flex', flexDirection: 'column', padding: '1.25rem 1.25rem 1.5rem',
+                overflowY: 'auto', maxHeight: '100vh',
               }}
             >
-              <div style={{ position: 'absolute', top: '1rem', left: '1.5rem' }}>
-                <img src="/ace_logo.jpg" alt="ACE Group Logo" style={{ height: 40, width: 'auto', borderRadius: 5, objectFit: 'contain' }} />
+              {/* Drawer header with logo and close button */}
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.5rem', paddingBottom: '1rem', borderBottom: '1px solid rgba(139,0,0,0.08)' }}>
+                <img src="/ace_logo_cropped.png" alt="ACE Group Logo" style={{ height: 36, width: 'auto', borderRadius: 5, objectFit: 'contain' }} />
+                <button
+                  onClick={() => setOpen(false)}
+                  aria-label="Close menu"
+                  style={{
+                    width: 36, height: 36, borderRadius: 8,
+                    background: 'rgba(139,16,16,0.08)', border: '1px solid rgba(139,16,16,0.15)',
+                    color: '#8B1010', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    cursor: 'pointer',
+                  }}
+                >
+                  <X size={18} />
+                </button>
               </div>
 
               <motion.ul variants={stagger} initial="hidden" animate="visible"
@@ -198,7 +236,7 @@ export default function Navbar({ onOpenModal }) {
                       style={{
                         width: '100%', textAlign: 'left', background: active === item.target ? 'rgba(139,16,16,0.10)' : 'transparent',
                         border: 'none', borderRadius: 10, padding: '0.75rem 1rem', cursor: 'pointer',
-                        fontFamily: 'var(--font-h)', fontSize: '1.05rem', fontWeight: active === item.target ? 700 : 500,
+                        fontFamily: 'var(--font-h)', fontSize: '1rem', fontWeight: active === item.target ? 700 : 500,
                         color: active === item.target ? '#8B1010' : 'var(--c-text)',
                       }}
                     >{item.label}</button>
@@ -206,13 +244,13 @@ export default function Navbar({ onOpenModal }) {
                 ))}
               </motion.ul>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginTop: '1.5rem', paddingTop: '1rem', borderTop: '1px solid rgba(139,0,0,0.08)' }}>
                 <a href="tel:+918448983343"
-                  style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', textDecoration: 'none', color: '#8B1010', fontWeight: 600, padding: '0.75rem', borderRadius: 12, background: 'rgba(139,16,16,0.07)', border: '1px solid rgba(139,16,16,0.15)' }}
+                  style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', textDecoration: 'none', color: '#8B1010', fontWeight: 600, padding: '0.75rem', borderRadius: 12, background: 'rgba(139,16,16,0.07)', border: '1px solid rgba(139,16,16,0.15)', fontSize: '0.9rem' }}
                 >
                   <Phone size={14} style={{ color: '#8B1010' }} />+91 84489 83343
                 </a>
-                <button onClick={() => { setOpen(false); onOpenModal('Submit Query'); }} className="btn btn-primary" style={{ width: '100%' }}>
+                <button onClick={() => { setOpen(false); onOpenModal('Submit Query'); }} className="btn btn-primary" style={{ width: '100%', padding: '0.75rem' }}>
                   Submit Query
                 </button>
               </div>
