@@ -45,7 +45,7 @@ export default function About() {
             {/* Contact badges */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: '1rem', marginTop: '0.5rem' }}>
               {[
-                { icon: PhoneCall, label: 'Call an Advisor', value: '+91 84489 83343' },
+                { icon: PhoneCall, label: 'Call an Advisor', value: '+91 99586 66033' },
                 { icon: Mail,      label: 'Sales Enquiry',   value: 'blixtechnologies.noida@gmail.com' },
               ].map(({ icon: Icon, label, value }, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', background: '#fff', border: '1px solid var(--c-border)', borderRadius: 14, padding: '0.85rem 1.1rem', boxShadow: 'var(--shadow-sm)' }}>

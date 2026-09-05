@@ -93,7 +93,7 @@ export default function App() {
 
       {/* Sticky Mobile Bottom Action Bar */}
       <nav aria-label="Mobile Quick Actions" className="mobile-bottom-bar">
-        <a href="tel:+918448983343" className="mob-action-btn mob-call">
+        <a href="tel:+919958666033" className="mob-action-btn mob-call">
           <PhoneCall size={17} />
           <span>Call Now</span>
         </a>

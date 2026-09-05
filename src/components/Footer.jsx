@@ -49,7 +49,7 @@ export default function Footer() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.7rem', fontSize: '0.84rem' }}>
               {[
                 { icon: MapPin, value: 'Sector 150, Greater Noida Expressway, UP — 201310' },
-                { icon: Phone,  value: '+91 84489 83343', href: 'tel:+918448983343' },
+                { icon: Phone,  value: '+91 99586 66033', href: 'tel:+919958666033' },
                 { icon: Mail,   value: 'blixtechnologies.noida@gmail.com', href: 'mailto:blixtechnologies.noida@gmail.com' },
               ].map(({ icon: Icon, value, href }, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.65rem' }}>
