@@ -6,46 +6,39 @@ const PLANS = [
   { 
     type: '3 BHK (1927 Sq.Ft.)', 
     size: '1,927 Sq.Ft.', 
-    rooms: '3 Bed / 2 Bath', 
     desc: 'Spacious 3-bedroom layout with premium finishes, wide living-dining area, and modern kitchen.',
-    price: '₹1.21 Cr*',
-    launch: '₹5,000',
-    prelaunch: '₹16,995',
-    benefit: '₹96,35,000'
+    launchBsp: '₹21,995/Sq.Ft.',
+    discount: '₹5,000/Sq.Ft.',
+    prelaunchBsp: '₹16,995/Sq.Ft.',
+    priceRange: '₹3 Cr – ₹4 Cr',
+    benefit: '₹96,35,000',
+    eoi: '₹10,00,000',
   },
   { 
-    type: '3 BHK (2614 Sq.Ft.)', 
+    type: '4 BHK (2614 Sq.Ft.)', 
     size: '2,614 Sq.Ft.', 
-    rooms: '3 Bed / 3 Bath', 
-    desc: 'Grand 3-bedroom unit with extended living spaces, premium appointments, and luxury finishes.',
-    price: '₹1.21 Cr*',
-    launch: '₹5,000',
-    prelaunch: '₹16,995',
-    benefit: '₹1,30,70,000'
+    desc: 'Grand 4-bedroom unit with extended living spaces, premium appointments, and luxury finishes.',
+    launchBsp: '₹21,995/Sq.Ft.',
+    discount: '₹5,000/Sq.Ft.',
+    prelaunchBsp: '₹16,995/Sq.Ft.',
+    priceRange: '₹4 Cr – ₹6 Cr',
+    benefit: '₹1,30,70,000',
+    eoi: '₹15,00,000',
   },
   { 
-    type: '4 BHK (4370 Sq.Ft.)', 
+    type: '4 BHK + Servant (4370 Sq.Ft.)', 
     size: '4,370 Sq.Ft.', 
-    rooms: '4 Bed / 4 Bath', 
     desc: 'Luxurious 4-bedroom residence with family lounge, servant quarters, and premium amenities.',
-    price: '₹1.21 Cr*',
-    launch: '₹5,000',
-    prelaunch: '₹16,995',
-    benefit: '₹2,18,50,000'
-  },
-  { 
-    type: '4 BHK + Servant', 
-    size: '4,370+ Sq.Ft.', 
-    rooms: '4 Bed / 5 Bath / Utility', 
-    desc: 'Premium penthouse-style 4-bedroom unit with servant quarter, utility room, and luxury fittings.',
-    price: '₹1.21 Cr*',
-    launch: '₹5,000',
-    prelaunch: '₹16,995',
-    benefit: '₹2,18,50,000'
+    launchBsp: '₹21,995/Sq.Ft.',
+    discount: '₹5,000/Sq.Ft.',
+    prelaunchBsp: '₹16,995/Sq.Ft.',
+    priceRange: '₹6 Cr – ₹8 Cr',
+    benefit: '₹2,18,50,000',
+    eoi: '₹20,00,000',
   },
 ];
 
-const ACCENT_COLORS = ['#8B0000','#A31515','#6B0000','#C0392B'];
+const ACCENT_COLORS = ['#8B0000','#A31515','#6B0000'];
 
 const BlueprintSVG = ({ color }) => (
   <svg viewBox="0 0 200 152" style={{ width: '100%', height: 148, borderRadius: 12, background: '#f0f4f8', border: '1px dashed #d0d8e4' }}>
@@ -82,7 +75,7 @@ export default function FloorPlans({ onOpenModal }) {
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '1.75rem' }}>
-          {PLANS.map(({ type, size, rooms, desc, price, launch, prelaunch, benefit }, i) => (
+          {PLANS.map(({ type, size, desc, launchBsp, discount, prelaunchBsp, priceRange, benefit, eoi }, i) => (
             <motion.div key={i}
               initial={{ opacity: 0, scale: 0.96 }} whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }} transition={{ duration: 0.48, delay: i * 0.09, ease: [0.22,1,0.36,1] }}
@@ -93,10 +86,7 @@ export default function FloorPlans({ onOpenModal }) {
               <BlueprintSVG color={ACCENT_COLORS[i]} />
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
-                  <span style={{ fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--c-green)', background: 'var(--c-green-light)', padding: '0.25rem 0.65rem', borderRadius: 'var(--r-full)' }}>
-                    {rooms}
-                  </span>
+                <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
                   <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', fontSize: '0.78rem', color: 'var(--c-text-2)', fontWeight: 600 }}>
                     <Maximize2 size={12} /> {size}
                   </span>
@@ -114,18 +104,22 @@ export default function FloorPlans({ onOpenModal }) {
                   marginTop: '0.5rem'
                 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
-                    <span style={{ fontWeight: 700, color: 'var(--c-crimson)', fontSize: '1.1rem' }}>Starting at {price}</span>
-                    <span style={{ fontSize: '0.7rem', color: 'var(--c-text-2)', background: '#fff', padding: '0.2rem 0.5rem', borderRadius: '6px' }}>*Base Price</span>
+                    <span style={{ fontWeight: 700, color: 'var(--c-crimson)', fontSize: '1.1rem' }}>Launch BSP {launchBsp}</span>
                   </div>
                   
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', fontSize: '0.75rem' }}>
                     <div>
-                      <span style={{ color: 'var(--c-text-2)' }}>Launch Discount:</span>
-                      <div style={{ fontWeight: 600, color: 'var(--c-green)' }}>{launch}</div>
+                      <span style={{ color: 'var(--c-text-2)' }}>Pre-Launch Discount:</span>
+                      <div style={{ fontWeight: 600, color: 'var(--c-green)' }}>{discount}</div>
                     </div>
                     <div>
-                      <span style={{ color: 'var(--c-text-2)' }}>Pre-Launch:</span>
-                      <div style={{ fontWeight: 600, color: 'var(--c-text)' }}>{prelaunch}</div>
+                      <span style={{ color: 'var(--c-text-2)' }}>Pre-Launch BSP:</span>
+                      <div style={{ fontWeight: 600, color: 'var(--c-text)' }}>{prelaunchBsp}</div>
+                      <div style={{ fontWeight: 700, color: 'var(--c-crimson)', marginTop: '0.15rem' }}>{priceRange}</div>
+                    </div>
+                    <div>
+                      <span style={{ color: 'var(--c-text-2)' }}>EOI Amount:</span>
+                      <div style={{ fontWeight: 600, color: 'var(--c-text)' }}>{eoi}</div>
                     </div>
                   </div>
                   
@@ -137,7 +131,7 @@ export default function FloorPlans({ onOpenModal }) {
                     borderLeft: '3px solid var(--c-crimson)' 
                   }}>
                     <span style={{ fontSize: '0.7rem', color: 'var(--c-text-2)' }}>Pre Launch Benefit:</span>
-                    <div style={{ fontWeight: 700, color: 'var(--c-crimson)', fontSize: '0.9rem' }}>₹{benefit}</div>
+                    <div style={{ fontWeight: 700, color: 'var(--c-crimson)', fontSize: '0.9rem' }}>{benefit}</div>
                   </div>
                 </div>
               </div>

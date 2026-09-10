@@ -13,7 +13,7 @@ export const FAQS = [
   },
   {
     question: 'What apartment configurations and sizes are available?',
-    answer: 'The project features ultra-luxury 3 BHK and 4 BHK residences with expansive layouts ranging from 1,927 sq.ft. to over 4,370 sq.ft., including 3 BHK, 3 BHK Large, 4 BHK, and 4 BHK + Servant quarter configurations.',
+    answer: 'The project features ultra-luxury 3 BHK and 4 BHK residences with expansive layouts ranging from 1,927 sq.ft. to 4,370 sq.ft., including 3 BHK (1,927 sq.ft.), 3 BHK Large (2,614 sq.ft.), and 4 BHK (4,370 sq.ft.) configurations.',
   },
   {
     question: 'What is the starting price and pre-launch offer at ACE Arte?',

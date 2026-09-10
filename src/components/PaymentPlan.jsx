@@ -13,8 +13,8 @@ const PAYMENT_SCHEDULE = [
 
 const EOI_AMOUNTS = [
   { size: '1927 Sq.Ft.', amount: '₹10,00,000', type: '3 BHK' },
-  { size: '2614 Sq.Ft.', amount: '₹15,00,000', type: '3 BHK Large' },
-  { size: '4370 Sq.Ft.', amount: '₹20,00,000', type: '4 BHK' },
+  { size: '2614 Sq.Ft.', amount: '₹15,00,000', type: '4 BHK' },
+  { size: '4370 Sq.Ft.', amount: '₹20,00,000', type: '4 BHK + Servant' },
 ];
 
 export default function PaymentPlan() {
@@ -225,10 +225,11 @@ export default function PaymentPlan() {
                 margin: 0,
                 paddingLeft: '1.25rem'
               }}>
-                <li>PLC, GST & Other Charges Extra</li>
-                <li>Unhappy? No deal will be given, full payment will be refunded without any deduction</li>
-                <li>Priority will be given to First Come First Serve basis</li>
-                <li>Offer code will be announced at the time of allotment</li>
+                <li>PLC, GST & Other Charges Extra.</li>
+                <li>Unit will be given on First Come First Serve basis.</li>
+                <li>Priority No. will be given.</li>
+                <li>If unit is not allotted, full payment will be refunded without any deduction.</li>
+                <li>Offer code will be announced at the time of allotment.</li>
               </ul>
             </div>
           </motion.div>

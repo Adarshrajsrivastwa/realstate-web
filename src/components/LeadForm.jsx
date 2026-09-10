@@ -4,19 +4,22 @@ import { CircleCheckBig, AlertCircle, Loader2 } from 'lucide-react';
 import { sendLeadEmail } from '../services/emailService';
 
 export const PROPERTY_OPTIONS = [
-  { value: '2BHK', label: '2 BHK (1,450 sq.ft.)' },
-  { value: '3BHK', label: '3 BHK (1,950 sq.ft.)' },
-  { value: '4BHK', label: '4 BHK (2,450 sq.ft.)' },
-  { value: '4BHK+S', label: '4 BHK + Servant (2,900 sq.ft.)' },
-  { value: 'Penthouse', label: 'Ultra Luxury Penthouse' },
+  { value: '3 BHK', label: '3 BHK' },
+  { value: '4 BHK', label: '4 BHK' },
+  { value: '4 BHK + Servant', label: '4 BHK + Servant' },
 ];
 
 export const BUDGET_OPTIONS = [
-  { value: '1.2-1.5Cr', label: '₹1.21 Cr – ₹1.5 Cr' },
-  { value: '1.5-2Cr', label: '₹1.5 Cr – ₹2 Cr' },
-  { value: '2-3Cr', label: '₹2 Cr – ₹3 Cr' },
-  { value: '3Cr+', label: '₹3 Cr+' },
+  { value: '₹3 Cr – ₹4 Cr', label: '₹3 Cr – ₹4 Cr' },
+  { value: '₹4 Cr – ₹6 Cr', label: '₹4 Cr – ₹6 Cr' },
+  { value: '₹6 Cr – ₹8 Cr', label: '₹6 Cr – ₹8 Cr' },
 ];
+
+export const PROPERTY_BUDGET_MAP = {
+  '3 BHK': '₹3 Cr – ₹4 Cr',
+  '4 BHK': '₹4 Cr – ₹6 Cr',
+  '4 BHK + Servant': '₹6 Cr – ₹8 Cr',
+};
 
 export default function LeadForm({
   theme = 'dark',
@@ -27,19 +30,35 @@ export default function LeadForm({
 }) {
   const isDark = theme === 'dark';
 
+  const initialPropertyType = defaultPropertyType || '';
   const [form, setForm] = useState({
     name: '',
     phone: '',
     email: '',
-    propertyType: defaultPropertyType || '',
-    budget: '',
+    propertyType: initialPropertyType,
+    budget: PROPERTY_BUDGET_MAP[initialPropertyType] || '',
     message: '',
   });
-
   const [errors, setErrors] = useState({});
   const [sending, setSending] = useState(false);
   const [done, setDone] = useState(false);
   const [apiError, setApiError] = useState('');
+
+  const assignedBudget = PROPERTY_BUDGET_MAP[form.propertyType] || '';
+  const budgetChoices = assignedBudget
+    ? BUDGET_OPTIONS.filter((opt) => opt.value === assignedBudget)
+    : [];
+
+  const handlePropertyTypeChange = (propertyType) => {
+    setForm({
+      ...form,
+      propertyType,
+      budget: PROPERTY_BUDGET_MAP[propertyType] || '',
+    });
+    if (errors.propertyType || errors.budget) {
+      setErrors({ ...errors, propertyType: undefined, budget: undefined });
+    }
+  };
 
   const validate = () => {
     const errs = {};
@@ -64,8 +83,11 @@ export default function LeadForm({
       errs.propertyType = 'Select preferred property type';
     }
 
-    if (!form.budget) {
-      errs.budget = 'Select your budget range';
+    const expectedBudget = PROPERTY_BUDGET_MAP[form.propertyType];
+    if (!form.propertyType) {
+      errs.budget = 'Select a property type to assign budget';
+    } else if (!form.budget || form.budget !== expectedBudget) {
+      errs.budget = 'Budget does not match the selected property type';
     }
 
     setErrors(errs);
@@ -80,8 +102,17 @@ export default function LeadForm({
 
     setSending(true);
     try {
+      const propertyType =
+        PROPERTY_OPTIONS.find((opt) => opt.value === form.propertyType)?.label || form.propertyType;
+      const budget =
+        PROPERTY_BUDGET_MAP[form.propertyType] ||
+        BUDGET_OPTIONS.find((opt) => opt.value === form.budget)?.label ||
+        form.budget;
+
       await sendLeadEmail({
         ...form,
+        propertyType,
+        budget,
         source,
       });
 
@@ -92,7 +123,7 @@ export default function LeadForm({
         phone: '',
         email: '',
         propertyType: defaultPropertyType || '',
-        budget: '',
+        budget: PROPERTY_BUDGET_MAP[defaultPropertyType] || '',
         message: '',
       });
       setErrors({});
@@ -251,7 +282,7 @@ export default function LeadForm({
             <select
               className={inputClass}
               value={form.propertyType}
-              onChange={(e) => setForm({ ...form, propertyType: e.target.value })}
+              onChange={(e) => handlePropertyTypeChange(e.target.value)}
               style={{ cursor: 'pointer' }}
             >
               <option value="" disabled>
@@ -278,12 +309,13 @@ export default function LeadForm({
               className={inputClass}
               value={form.budget}
               onChange={(e) => setForm({ ...form, budget: e.target.value })}
-              style={{ cursor: 'pointer' }}
+              style={{ cursor: assignedBudget ? 'pointer' : 'not-allowed' }}
+              disabled={!form.propertyType}
             >
               <option value="" disabled>
-                Select your budget
+                {form.propertyType ? 'Select your budget' : 'Select property type first'}
               </option>
-              {BUDGET_OPTIONS.map((opt) => (
+              {budgetChoices.map((opt) => (
                 <option key={opt.value} value={opt.value}>
                   {opt.label}
                 </option>
