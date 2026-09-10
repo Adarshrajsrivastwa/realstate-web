@@ -6,7 +6,7 @@ import LeadForm from './LeadForm';
 const BADGES = [
   { icon: ShieldCheck, text: 'UP RERA Approved — Reg No: UPRERAPRJ15298644',            color: '#ffffff', glow: 'rgba(255,255,255,0.10)'  },
   { icon: Leaf,        text: 'Best of Noida — Premium residential township',            color: '#ffffff', glow: 'rgba(255,255,255,0.08)' },
-  { icon: Landmark,    text: 'Luxury 3-4 BHK residences from ₹3 Cr – ₹8 Cr',         color: '#ffffff', glow: 'rgba(255,255,255,0.08)'  },
+  { icon: Landmark,    text: 'Luxury 3-4 BHK residences starting with ₹3.95 Cr',         color: '#ffffff', glow: 'rgba(255,255,255,0.08)'  },
 ];
 
 const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.13, delayChildren: 0.18 } } };

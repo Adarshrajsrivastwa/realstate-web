@@ -4,7 +4,7 @@ import { CircleCheck } from 'lucide-react';
 
 const FEATURES = [
   { title: 'ACE Arte - Best of Noida Township',       desc: 'Premium residential project by ACE Group, established leader in luxury real estate development.' },
-  { title: 'Pre-Launch Pricing from ₹1.21 Cr*',      desc: 'Exclusive pre-launch offers with significant savings and flexible payment plans available.' },
+  { title: 'Pre-Launch Pricing starting with ₹3.95 Cr*',      desc: 'Exclusive pre-launch offers with significant savings and flexible payment plans available.' },
   { title: 'Choice of 3 & 4 BHK Luxury Residences',  desc: 'Spacious apartments from 1927 to 4370+ Sq.Ft. with premium finishes and modern amenities.' },
   { title: 'UP RERA Approved - UPRERAPRJ15298644',    desc: 'Fully approved project ensuring transparency, timely delivery, and buyer protection.' },
   { title: 'Payment Plan 20X5 with Easy EMIs',        desc: 'Flexible construction-linked payment structure designed for investor convenience.' },

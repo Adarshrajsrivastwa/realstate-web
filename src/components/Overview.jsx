@@ -10,9 +10,9 @@ const IMAGES = [
 
 const STATS = [
   { value: '80%',       label: 'Green Open Space' },
-  { value: '4 Towers',  label: 'Low-Density Design' },
-  { value: '11 Acres',  label: 'Township Footprint' },
-  { value: '450+',      label: 'Premium Residences' },
+  { value: '11 Towers', label: 'Low-Density Design' },
+  { value: '15 Acres',  label: 'Township Footprint' },
+  { value: '790',       label: 'Premium Residences' },
 ];
 
 export default function Overview() {
@@ -33,7 +33,7 @@ export default function Overview() {
             </div>
 
             <p style={{ fontSize: '1rem', lineHeight: 1.75, color: 'var(--c-text-2)' }}>
-              Spread across a sprawling 11-acre sanctuary, ACE Arte is Noida's premier residential destination. High-rise towers rise majestically against the skyline, surrounded by extensive landscaped greens in Noida's lowest-density residential sector.
+              Spread across a sprawling 15-acre sanctuary, ACE Arte is Noida's premier residential destination. High-rise towers rise majestically against the skyline, surrounded by extensive landscaped greens in Noida's lowest-density residential sector.
             </p>
             <p style={{ fontSize: '1rem', lineHeight: 1.75, color: 'var(--c-text-2)' }}>
               Designed by award-winning landscape planners, the township integrates 80% open natural spaces with ultra-luxury specifications — high-speed elevators, premium triple-height lobbies, jogging loops, kids play zones, and smart gated security.

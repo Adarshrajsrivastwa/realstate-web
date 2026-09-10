@@ -25,7 +25,7 @@ export const FAQS = [
   },
   {
     question: 'What amenities and green features are included in the township?',
-    answer: 'Spread across 11 acres with 80% open green spaces, the township includes a 20,000+ sq.ft. five-star clubhouse, resort swimming pool, badminton courts, indoor sports lounge, botanical gardens, jogging loops, and multi-tier biometric gated security.',
+    answer: 'Spread across 15 acres with 80% open green spaces, the township includes a 20,000+ sq.ft. five-star clubhouse, resort swimming pool, badminton courts, indoor sports lounge, botanical gardens, jogging loops, and multi-tier biometric gated security.',
   },
   {
     question: 'Who is the developer of ACE Arte?',
