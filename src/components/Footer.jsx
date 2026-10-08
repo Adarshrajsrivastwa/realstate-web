@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronUp, Phone, Mail, MapPin, ArrowUpRight } from 'lucide-react';
+import { ChevronUp, Phone, MapPin, ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const NAV_LINKS = [
@@ -50,7 +50,6 @@ export default function Footer() {
               {[
                 { icon: MapPin, value: 'Sector 150, Greater Noida Expressway, UP — 201310' },
                 { icon: Phone,  value: '+91 99586 66033', href: 'tel:+919958666033' },
-                { icon: Mail,   value: 'blixtechnologies.noida@gmail.com', href: 'mailto:blixtechnologies.noida@gmail.com' },
               ].map(({ icon: Icon, value, href }, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.65rem' }}>
                   <Icon size={14} style={{ color: '#ff9999', marginTop: 3, flexShrink: 0 }} />
